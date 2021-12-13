@@ -1,0 +1,11 @@
+- Người dùng đăng ký và đăng nhập hệ thống
+- Phân quyền cho người dùng: 
+		+ đăng ký ăn trưa 
+		+ xem được các món ăn
+- Phân quyền cho admin:
+		+ đăng nhập
+		+ thêm các món ăn theo ngày 
+		+ thống kê các đơn đăng ký ăn trưa theo ngày
+ (in ra excel)
+		+ Xem được số lượng đăng ký, thông tin cụ thể
+		

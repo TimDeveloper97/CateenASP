@@ -16,4 +16,9 @@
     <Folder Include="Areas\Admin\Views\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\API\API.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
 </Project>

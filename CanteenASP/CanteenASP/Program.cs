@@ -1,7 +1,16 @@
+using API;
+using API.Interface;
+using Model;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region Service
+builder.Services.AddSingleton<ICrud<Food>, FoodService>();
+builder.Services.AddSingleton<ICrud<User>, UserService>();
+#endregion
 
 var app = builder.Build();
 

@@ -1,5 +1,6 @@
 ﻿using API.Interface;
 using Model;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace API
             return await Task.FromResult(false);
         }
 
-        public async Task<bool> Delete(string id)
+        public async Task<bool> Delete(ObjectId id)
         {
             if (UserCollection != null)
             {
@@ -49,7 +50,7 @@ namespace API
             return await Task.FromResult(result.Result);
         }
 
-        public async Task<bool> IsExist(string id)
+        public async Task<bool> IsExist(ObjectId id)
         {
             if (UserCollection != null)
             {
@@ -59,13 +60,13 @@ namespace API
             return await Task.FromResult(false);
         }
 
-        public async Task<User> Read(string id)
+        public async Task<User> Read(ObjectId id)
         {
             if (UserCollection != null)
             {
-                var user = await UserCollection.FindAsync(x => x.Id == id);
+                var user = await UserCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-                return await Task.FromResult((User)user);
+                return user;
             }
             return await Task.FromResult<User>(null);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace API.Interface
         Task<List<T>> GetAll();
         Task<bool> Create(T t);
         Task<bool> Update(T t);
-        Task<bool> Delete(string id);
-        Task<T> Read(string id);
-        Task<bool> IsExist(string id);
+        Task<bool> Delete(ObjectId id);
+        Task<T> Read(ObjectId id);
+        Task<bool> IsExist(ObjectId id);
     }
 }

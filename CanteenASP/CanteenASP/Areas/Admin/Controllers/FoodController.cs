@@ -1,19 +1,44 @@
-﻿using API.Interface;
+﻿using API;
+using API.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
 namespace CanteenASP.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class FoodController : Controller
     {
-        ICrud<Food> _iFoodService;
+        FoodService _foodService;
 
-        public FoodController(ICrud<Food> iFoodService)
+        public FoodController()
         {
-            this._iFoodService = iFoodService;
+            this._foodService = new FoodService();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            var lFood = await _foodService.GetAll();
+            return View(lFood);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Food food)
+        {
+            var result = await _foodService.Create(food);
+            if(result)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(food);
+        }
+
+        public IActionResult Delete()
         {
 
 

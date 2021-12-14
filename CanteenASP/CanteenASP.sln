@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanteenASP", "CanteenASP\CanteenASP.csproj", "{ADA1A910-7427-4E55-8EA8-5A6E2CB20040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanteenASP", "CanteenASP\CanteenASP.csproj", "{ADA1A910-7427-4E55-8EA8-5A6E2CB20040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{941F06CB-A8B2-4E36-AFE7-27843D4C5DBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{941F06CB-A8B2-4E36-AFE7-27843D4C5DBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{48519324-7E41-481C-A030-9254E95E839D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{48519324-7E41-481C-A030-9254E95E839D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB229F1C-0689-4435-9992-C7953EC64544}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

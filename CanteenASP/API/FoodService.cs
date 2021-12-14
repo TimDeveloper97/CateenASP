@@ -13,61 +13,76 @@ namespace API
     public class FoodService : ICrud<Food>
     {
         private string _collection = "food";
+        private IMongoCollection<Food> _fCollection;
+
+        protected IMongoCollection<Food> FoodCollection 
+        {
+            get
+            {
+                if(_fCollection == null)
+                    _fCollection = BaseService.Db.GetCollection<Food>(_collection);
+                return _fCollection;    
+            }
+        }
+
         public async Task<bool> Create(Food t)
         {
-            var fService = BaseService.Db.GetCollection<Food>(_collection);
-            if (fService != null)
+            t.Id = new ObjectId();
+            if (FoodCollection != null)
             {
-                fService.InsertOne(t);
-                return await Task.FromResult(true);
+                FoodCollection.InsertOne(t);
+                return true;
             }
-            return await Task.FromResult(false);
+            return false;
         }
 
         public async Task<bool> Delete(string id)
         {
-            var fService = BaseService.Db.GetCollection<Food>(_collection);
-            if (fService != null)
+            if (FoodCollection != null)
             {
-                await fService.FindOneAndDeleteAsync(x => x.Id == id);
-                return await Task.FromResult(true);
+                await FoodCollection.FindOneAndDeleteAsync(x => x.Id == new ObjectId(id));
+                return true;
             }
-            return await Task.FromResult(false);
+            return false;
+        }
+
+        public async Task<List<Food>> GetAll()
+        {
+            var result = (await FoodCollection.FindAsync(x => true)).ToListAsync();
+            return result.Result;
         }
 
         public async Task<bool> IsExist(string id)
         {
-            var fService = BaseService.Db.GetCollection<Food>(_collection);
-            if (fService != null)
+            if (FoodCollection != null)
             {
-                var food = await fService.FindAsync(x => x.Id == id);
-                return await Task.FromResult(true);
+                var food = await FoodCollection.FindAsync(x => x.Id == new ObjectId(id));
+                return true;
             }
-            return await Task.FromResult(false);
+            return false;
         }
 
         public async Task<Food> Read(string id)
         {
-            var fService = BaseService.Db.GetCollection<Food>(_collection);
-            if (fService != null)
+            if (FoodCollection != null)
             {
-                var food = await fService.FindAsync(x => x.Id == id);
+                var food = await FoodCollection.FindAsync(x => x.Id == new ObjectId(id));
 
-                return await Task.FromResult((Food)food);
+                return (Food)food;
             }
-            return await Task.FromResult<Food>(null);
+            return null;
         }
 
         public async Task<bool> Update(Food t)
         {
             var fService = BaseService.Db.GetCollection<Food>(_collection);
-            if (fService != null)
+            if (FoodCollection != null)
             {
-                var result = await fService.UpdateOneAsync(x => x.Id == t.Id,
+                var result = await FoodCollection.UpdateOneAsync(x => x.Id == t.Id,
                      Builders<Food>.Update.Set(z => z, t));
-                return await Task.FromResult(true);
+                return true;
             }
-            return await Task.FromResult(false);
+            return false;
         }
     }
 }

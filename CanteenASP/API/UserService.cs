@@ -12,12 +12,22 @@ namespace API
     public class UserService : ICrud<User>
     {
         private string _collection = "user";
+        private IMongoCollection<User> _uCollection;
+
+        protected IMongoCollection<User> UserCollection
+        {
+            get
+            {
+                if (_uCollection == null)
+                    _uCollection = BaseService.Db.GetCollection<User>(_collection);
+                return _uCollection;
+            }
+        }
         public async Task<bool> Create(User t)
         {
-            var uService = BaseService.Db.GetCollection<User>(_collection);
-            if (uService != null)
+            if (UserCollection != null)
             {
-                uService.InsertOne(t);
+                UserCollection.InsertOne(t);
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
@@ -25,21 +35,25 @@ namespace API
 
         public async Task<bool> Delete(string id)
         {
-            var uService = BaseService.Db.GetCollection<User>(_collection);
-            if (uService != null)
+            if (UserCollection != null)
             {
-                await uService.FindOneAndDeleteAsync(x => x.Id == id);
+                await UserCollection.FindOneAndDeleteAsync(x => x.Id == id);
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
         }
 
+        public async Task<List<User>> GetAll()
+        {
+            var result = (await UserCollection.FindAsync(x => true)).ToListAsync();
+            return await Task.FromResult(result.Result);
+        }
+
         public async Task<bool> IsExist(string id)
         {
-            var uService = BaseService.Db.GetCollection<User>(_collection);
-            if (uService != null)
+            if (UserCollection != null)
             {
-                var user = await uService.FindAsync(x => x.Id == id);
+                var user = await UserCollection.FindAsync(x => x.Id == id);
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
@@ -47,10 +61,9 @@ namespace API
 
         public async Task<User> Read(string id)
         {
-            var uService = BaseService.Db.GetCollection<User>(_collection);
-            if (uService != null)
+            if (UserCollection != null)
             {
-                var user = await uService.FindAsync(x => x.Id == id);
+                var user = await UserCollection.FindAsync(x => x.Id == id);
 
                 return await Task.FromResult((User)user);
             }
@@ -59,10 +72,9 @@ namespace API
 
         public async Task<bool> Update(User t)
         {
-            var uService = BaseService.Db.GetCollection<User>(_collection);
-            if (uService != null)
+            if (UserCollection != null)
             {
-                var result = await uService.UpdateOneAsync(x => x.Id == t.Id,
+                var result = await UserCollection.UpdateOneAsync(x => x.Id == t.Id,
                      Builders<User>.Update.Set(z => z, t));
                 return await Task.FromResult(true);
             }

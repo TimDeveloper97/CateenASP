@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 #region Service
-builder.Services.AddSingleton<ICrud<Food>, FoodService>();
-builder.Services.AddSingleton<ICrud<User>, UserService>();
+builder.Services.AddTransient<ICrud<Food>, FoodService>();
+builder.Services.AddTransient<ICrud<User>, UserService>();
 #endregion
 
 var app = builder.Build();
@@ -28,6 +28,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.MapControllerRoute(
+                    name: "admin",
+                    pattern: "{area:exists}/{controller=Food}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

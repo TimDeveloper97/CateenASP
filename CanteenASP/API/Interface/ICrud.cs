@@ -8,6 +8,7 @@ namespace API.Interface
 {
     public interface ICrud<T>
     {
+        Task<List<T>> GetAll();
         Task<bool> Create(T t);
         Task<bool> Update(T t);
         Task<bool> Delete(string id);

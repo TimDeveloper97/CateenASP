@@ -10,7 +10,8 @@ namespace API
 {
     internal class BaseService
     {
-        private static string _connectionString = "mongodb + srv://timdeveloper:Duyanh1997@cluster0.6ejvs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+        private static string _connectionString = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+        
         private static string _databaseName = "CateenASP";
 
         private static IMongoDatabase? _db;

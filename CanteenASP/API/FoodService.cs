@@ -73,12 +73,9 @@ namespace API
             if (FoodCollection != null)
             {
                 var food = await FoodCollection.Find(x => x.Id == t.Id).FirstOrDefaultAsync();
-                if (food == null)
-                {
-                    return false;
-                }
+                if (food == null) return false;
+
                 var filter = Builders<Food>.Filter.Eq("_id", t.Id);
-                
                 food.Name = t.Name;
                 food.Description = t.Description;
                 food.Price = t.Price;

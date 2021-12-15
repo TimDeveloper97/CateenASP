@@ -68,23 +68,20 @@ namespace API
             return food;
         }
 
+        [Obsolete]
         public async Task<bool> Update(Model.Food t)
         {
-            if (FoodCollection != null)
-            {
-                var food = await FoodCollection.Find(x => x.Id == t.Id).FirstOrDefaultAsync();
-                if (food == null) return false;
+            var food = await FoodCollection.Find(x => x.Id == t.Id).FirstOrDefaultAsync();
+            if (food == null) return false;
 
-                var filter = Builders<Food>.Filter.Eq("_id", t.Id);
-                food.Name = t.Name;
-                food.Description = t.Description;
-                food.Price = t.Price;
-                food.SideDishes = t.SideDishes;  
+            var filter = Builders<Food>.Filter.Eq("_id", new ObjectId(t.Id));
+            food.Name = t.Name;
+            food.Description = t.Description;
+            food.Price = t.Price;
+            food.SideDishes = t.SideDishes;
 
-                var result = await FoodCollection.ReplaceOneAsync(filter, food);
-                return true;
-            }
-            return false;
+            var result = await FoodCollection.ReplaceOneAsync(filter, food, options: new UpdateOptions() { IsUpsert = false });
+            return result.IsAcknowledged;
         }
     }
 }

@@ -71,15 +71,21 @@ namespace API
             return await Task.FromResult<User>(null);
         }
 
+        [Obsolete]
         public async Task<bool> Update(User t)
         {
-            if (UserCollection != null)
-            {
-                var result = await UserCollection.UpdateOneAsync(x => x.Id == t.Id,
-                     Builders<User>.Update.Set(z => z, t));
-                return await Task.FromResult(true);
-            }
-            return await Task.FromResult(false);
+            var user = await UserCollection.Find(x => x.Id == t.Id).FirstOrDefaultAsync();
+            if (user == null) return false;
+
+            var filter = Builders<User>.Filter.Eq("_id", new ObjectId(t.Id));
+            user.LastName = t.LastName;
+            user.FirstName = t.FirstName;   
+            user.Description = t.Description;
+            user.Phone = t.Phone;
+            //food.Password = t.Password; 
+
+            var result = await UserCollection.ReplaceOneAsync(filter, user, options: new UpdateOptions() { IsUpsert = false });
+            return result.IsAcknowledged;
         }
     }
 }

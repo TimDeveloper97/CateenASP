@@ -1,445 +1,447 @@
-﻿<!DOCTYPE html><html lang="en" class="no-js"><head>
-        <meta charset="UTF-8">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta name="csrf-token" content="6U300DfjWztKX1AaX4aWUUry0HAQzydUgnnkITRO">
-        <title>Lottery Display::Create Profile</title>
+    <meta name="csrf-token" content="6u300dfjwztkx1aax4awuury0haqzydugnnkitro">
+    <title>Cateen: Register</title>
 
-        <!-- <link rel="icon" type="image/png" href="images/fav-icon.png"> -->
-        <!-- Fav Icon -->
-        <link rel="icon" type="text/css" href="~/login.ico">
-	
-	<!-- Fonts Awesome -->
-	<link rel="stylesheet" type="text/css" href="~/css/all.min.css">
+    <!-- <link rel="icon" type="image/png" href="images/fav-icon.png"> -->
+    <!-- fav icon -->
+    <link rel="icon" type="text/css" href="~/login.ico">
 
-	<!-- Slick Slider -->
-	<link rel="stylesheet" href="~/css/slick.css">
+    <!-- fonts awesome -->
+    <link rel="stylesheet" type="text/css" href="~/css/all.min.css">
 
-	<!-- Sweetalert2 -->
-	<link rel="stylesheet" type="text/css" href="~/css/sweetalert2.min.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="~/css/slick.css">
 
-	<!-- Croppie -->
-	<link rel="stylesheet" type="text/css" href="~/css/croppie.css">
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" type="text/css" href="~/css/sweetalert2.min.css">
 
-	<!-- Select2 -->
-	<link rel="stylesheet" type="text/css" href="~/css/select2.min.css">
+    <!-- croppie -->
+    <link rel="stylesheet" type="text/css" href="~/css/croppie.css">
 
-	<!-- Main Style -->
-	<link rel="stylesheet" type="text/css" href="~/css/onboading_style.css">
+    <!-- select2 -->
+    <link rel="stylesheet" type="text/css" href="~/css/select2.min.css">
 
-	<!-- Main jQuery -->
-	<script src="~/js/jquery.min.js"></script>
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="~/css/onboading_style.css">
 
-	<!-- sortable -->
-	<script src="~/js/jquery-ui.js"></script>
+    <!-- main jquery -->
+    <script src="~/js/jquery.min.js"></script>
 
-	<!--Bootstrap JS-->
-	<script src="~/js/popper.min.js"></script>
-	<script src="~/js/bootstrap.min.js"></script>
+    <!-- sortable -->
+    <script src="~/js/jquery-ui.js"></script>
 
-        <!-- Scripts -->
-        <script>
+    <!--bootstrap js-->
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- scripts -->
+    <script>
         var site_url    = "https://lotteryscreen.app";
-        var _token      = "6U300DfjWztKX1AaX4aWUUry0HAQzydUgnnkITRO";
-        </script>
+        var _token      = "6u300dfjwztkx1aax4awuury0haqzydugnnkitro";
+    </script>
 </head>
 <body class="skin_white">
 
-        
-<div class="header onboading_header bg-white shadow-light-sm position-fixed w-100">
-	<div class="header_nav_wrap">
-		<div class="row">
-			<div class="col">
-				<div class="header_nav_logo text-center py-1">
-					<a href="https://lotteryscreen.app">
-						<img src="fonts/lottery-display-logo.svg" alt="logo">
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="progress rounded-0" style="height: 6px;">
-		<div class="progress-bar w-60" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-   	</div>
-</div>
 
-<div class="page_content_wrap p-0">
-	<!-- <div class="progress rounded-0" style="height: 6px;">
-		<div class="progress-bar w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-   	</div> -->
-
-    <div class="your-information py-md-6 p-4">
-        <div class="my-container">
-            <div class="row pb-4">
-                <form class="mt-4 w-100" method="POST" action="https://lotteryscreen.app/register">
-					<input type="hidden" name="_token" value="6U300DfjWztKX1AaX4aWUUry0HAQzydUgnnkITRO">                    <div class="col">
-                        <div class="payment-form theme-color bg-white p-md-5 p-3">
-                            <div class="payment-form mb-5">
-                                <h5>Your Information</h5>
-                                <p class="font-size-sm">Please enter the following details to create a user account.</p>
-                            </div>
-                            
-                                                        <div class="row">
-                                <!-- Full Name -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="bank_name" class="text-dark">Full Name</label>
-                                        <input type="text" name="full_name" id="full_name" required autofocus placeholder="Full name" class="form-control " autocomplete="off" >
-                                                                            </div>
-                                </div>
-                                <!-- Email Address -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email" class="text-dark">Email</label>
-                                        <input type="email" name="email" id="email" required autofocus placeholder="Email" class="form-control " autocomplete="off" >
-                                                                            </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- Username -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username" class="text-dark">Username</label>
-                                        <input type="text" name="username" id="username" required autofocus placeholder="Username" class="form-control " autocomplete="off" >
-                                                                            </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <!-- Password -->
-                                    <div class="form-group">
-                                        <label for="password" class="text-dark">Password</label>
-                                        <input type="password" name="password" id="password" placeholder="Password" class="form-control " autocomplete="off" required autofocus>
-                                        <!-- <div class="show_input_field">
-                                            <div class="checkbox_btn btn-group-toggle" data-toggle="buttons">
-                                            <label class="btn btn-outline-secondary">
-                                                    <input id="show_pass" type="checkbox"> <i class="fas fa-eye"></i>
-                                            </label>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Confirm Password -->
-                                    <div class="form-group">
-                                        <label for="password_confirmation" class="text-dark">Confirm Password</label>
-                                        <input type="password" name="password_confirmation" id="password_confirmation" required autofocus class="form-control" autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center py-5">
-                            <!-- <a href="https://lotteryscreen.app/onboarding/payment-form" class="btn btn-outline-secondary btn-lg mr-4">
-                                <i class="fas fa-long-arrow-alt-left pr-1"></i> Back
-                            </a> -->
-                            <!-- <a href="https://lotteryscreen.app/onboarding/store-setup" class="btn btn-primary btn-lg">
-                                Continue <i class="fas fa-long-arrow-alt-right pl-1"></i>
-                            </a> -->
-                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
-                        </div>
+    <div class="header onboading_header bg-white shadow-light-sm position-fixed w-100">
+        <div class="header_nav_wrap">
+            <div class="row">
+                <div class="col">
+                    <div class="header_nav_logo text-center py-1">
+                        <a href="https://lotteryscreen.app">
+                            <img src="~/fonts/lottery-display-logo.svg" alt="logo">
+                        </a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>  
-</div>
+        <div class="progress rounded-0" style="height: 6px;">
+            <div class="progress-bar w-60" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
+    <div class="page_content_wrap p-0">
+        <!-- <div class="progress rounded-0" style="height: 6px;">
+            <div class="progress-bar w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> -->
+
+        <div class="your-information py-md-6 p-4">
+            <div class="my-container">
+                <div class="row pb-4">
+                    <form class="mt-4 w-100" method="post" asp-action="register">
+                        <div class="col">
+                            <div class="payment-form theme-color bg-white p-md-5 p-3">
+                                <div class="payment-form mb-5">
+                                    <h5>your information</h5>
+                                    <p class="font-size-sm">please enter the following details to create a user account.</p>
+                                </div>
+
+                                <div class="row">
+                                    <!-- full name -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="bank_name" class="text-dark">full name</label>
+                                            <input type="text" name="full_name" id="full_name" required autofocus placeholder="full name" class="form-control " autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <!-- email address -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email" class="text-dark">email</label>
+                                            <input type="email" name="email" id="email" required autofocus placeholder="email" class="form-control " autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- username -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="username" class="text-dark">username</label>
+                                            <input type="text" name="username" id="username" required autofocus placeholder="username" class="form-control " autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- password -->
+                                        <div class="form-group">
+                                            <label for="password" class="text-dark">password</label>
+                                            <input type="password" name="password" id="password" placeholder="password" class="form-control " autocomplete="off" required autofocus>
+                                            <!-- <div class="show_input_field">
+                                                <div class="checkbox_btn btn-group-toggle" data-toggle="buttons">
+                                                <label class="btn btn-outline-secondary">
+                                                        <input id="show_pass" type="checkbox"> <i class="fas fa-eye"></i>
+                                                </label>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- confirm password -->
+                                        <div class="form-group">
+                                            <label for="password_confirmation" class="text-dark">confirm password</label>
+                                            <input type="password" name="password_confirmation" id="password_confirmation" required autofocus class="form-control" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center py-5">
+                                <!-- <a href="https://lotteryscreen.app/onboarding/payment-form" class="btn btn-outline-secondary btn-lg mr-4">
+                                    <i class="fas fa-long-arrow-alt-left pr-1"></i> back
+                                </a> -->
+                                <!-- <a href="https://lotteryscreen.app/onboarding/store-setup" class="btn btn-primary btn-lg">
+                                    continue <i class="fas fa-long-arrow-alt-right pl-1"></i>
+                                </a> -->
+                                <button type="submit" class="btn btn-primary btn-lg">register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-<!-- Slick Slider -->
-<script src="js/slick.min.js"></script>
+    <!-- slick slider -->
+    <script src="js/slick.min.js"></script>
 
-<!--Sweetalert2 -->
-<script src="js/sweetalert2.js"></script>
+    <!--sweetalert2 -->
+    <script src="js/sweetalert2.js"></script>
 
-<!-- Full Screen -->
-<script src="js/jquery.fullscreen.min.js"></script>
+    <!-- full screen -->
+    <script src="js/jquery.fullscreen.min.js"></script>
 
-<!-- Croppie -->
-<script src="js/croppie.js"></script>
+    <!-- croppie -->
+    <script src="js/croppie.js"></script>
 
-<!-- Select2 -->
-<script src="js/select2.min.js"></script>
+    <!-- select2 -->
+    <script src="js/select2.min.js"></script>
 
-<script>
+    <script>
 
-function iformat(icon)
-{
-   var originalOption = icon.element;
-   return $('<span><i class="fa ' + $(originalOption).data('icon') + '"></i> ' + icon.text + '</span>');
-}
+        function iformat(icon)
+        {
+           var originaloption = icon.element;
+           return $('<span><i class="fa ' + $(originaloption).data('icon') + '"></i> ' + icon.text + '</span>');
+        }
 
-var tooltip = {
-   init: function () {
-      $('[data-toggle="tooltip"]').tooltip();
-   },
-};
+        var tooltip = {
+           init: function () {
+              $('[data-toggle="tooltip"]').tooltip();
+           },
+        };
 
-jQuery('#pricing_table_content_list').slick({
-	dots: true,
-	arrows: false,
-	infinite: true,
-	speed: 300,
-	slidesToShow: 4,
-	slidesToScroll: 1,
-	autoplay: true,
-	autoplaySpeed: 5000,
-	responsive: [
-	{
-		breakpoint: 1301,
-		settings: {
-		slidesToShow: 2,
-		slidesToScroll: 1,
-		}
-	},
-		{
-		breakpoint: 1025,
-		settings: {
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		}
-	},
-	{
-		breakpoint: 769,
-		settings: {
-		slidesToShow: 1,
-		slidesToScroll: 1
-		}
-	},
-	{
-		breakpoint: 490,
-		settings: {
-		slidesToShow: 1,
-		slidesToScroll: 1
-		}
-	}
-	]
-});
+        jquery('#pricing_table_content_list').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            slidestoshow: 4,
+            slidestoscroll: 1,
+            autoplay: true,
+            autoplayspeed: 5000,
+            responsive: [
+            {
+                breakpoint: 1301,
+                settings: {
+                slidestoshow: 2,
+                slidestoscroll: 1,
+                }
+            },
+                {
+                breakpoint: 1025,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1,
+                }
+            },
+            {
+                breakpoint: 769,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1
+                }
+            },
+            {
+                breakpoint: 490,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1
+                }
+            }
+            ]
+        });
 
-$(".silder-section").slick({
-   dots: true,
-   infinite: false,
-   speed: 300,
-   slidesToShow: 4,
-   slidesToScroll: 1,
-   adaptiveHeight: true,
-   arrows: false,
-   adaptiveHeight:false,
-	//    responsive: [
-	//     {
-	//       breakpoint: 1000,
-	//       settings: {
-	//         slidesToShow: 2,
-	//         infinite: true,
-	//       }
-	//     },
-	//     {
-	//       breakpoint: 690,
-	//       settings: {
-	//         slidesToShow: 1,
-	//       }
-	//     }
-	//   ]
-});
+        $(".silder-section").slick({
+           dots: true,
+           infinite: false,
+           speed: 300,
+           slidestoshow: 4,
+           slidestoscroll: 1,
+           adaptiveheight: true,
+           arrows: false,
+           adaptiveheight:false,
+            //    responsive: [
+            //     {
+            //       breakpoint: 1000,
+            //       settings: {
+            //         slidestoshow: 2,
+            //         infinite: true,
+            //       }
+            //     },
+            //     {
+            //       breakpoint: 690,
+            //       settings: {
+            //         slidestoshow: 1,
+            //       }
+            //     }
+            //   ]
+        });
 
-$(".displayworking-slider").slick({
-   dots: true,
-   infinite: true,
-   speed: 300,
-   slidesToShow: 1,
-   slidesToScroll: 1,
-   adaptiveHeight: true,
-   arrows: false,
-   adaptiveHeight:false,
-	//    responsive: [
-	//     {
-	//       breakpoint: 1000,
-	//       settings: {
-	//         slidesToShow: 2,
-	//         infinite: true,
-	//       }
-	//     },
-	//     {
-	//       breakpoint: 690,
-	//       settings: {
-	//         slidesToShow: 1,
-	//       }
-	//     }
-	//   ]
-});
+        $(".displayworking-slider").slick({
+           dots: true,
+           infinite: true,
+           speed: 300,
+           slidestoshow: 1,
+           slidestoscroll: 1,
+           adaptiveheight: true,
+           arrows: false,
+           adaptiveheight:false,
+            //    responsive: [
+            //     {
+            //       breakpoint: 1000,
+            //       settings: {
+            //         slidestoshow: 2,
+            //         infinite: true,
+            //       }
+            //     },
+            //     {
+            //       breakpoint: 690,
+            //       settings: {
+            //         slidestoshow: 1,
+            //       }
+            //     }
+            //   ]
+        });
 
-// In your Javascript (external .js resource or <script> tag)
-/* $(document).ready(function() {
-    $('.select2').select2({
-      width: "100%",
-      templateSelection: iformat,
-      templateResult: iformat,
-      allowHtml: true
-    });
-}); */
+        // in your javascript (external .js resource or <script> tag)
+        /* $(document).ready(function() {
+            $('.select2').select2({
+              width: "100%",
+              templateselection: iformat,
+              templateresult: iformat,
+              allowhtml: true
+            });
+        }); */
 
-// Alert Modal Type
-$(document).on('click', '#success', function(e) {
-  Swal.fire({
-    title : "Success!",
-    text : "Successfully Saved.",
-    type : "success",
-    showConfirmButton: true,
-    showCloseButton: true,
-  })
-});
+        // alert modal type
+        $(document).on('click', '#success', function(e) {
+          swal.fire({
+            title : "success!",
+            text : "successfully saved.",
+            type : "success",
+            showconfirmbutton: true,
+            showclosebutton: true,
+          })
+        });
 
-$(document).on('click', '#error', function(e) {
-  Swal.fire({
-    title : "Are you sure to delete Winner?",
-    text : "Winner will be deleted.",
-    type : "error",
-    showCancelButton: true,
-    showConfirmButton: true,
-    showCloseButton: true,
-    dangerMode : true,
-  })
-});
+        $(document).on('click', '#error', function(e) {
+          swal.fire({
+            title : "are you sure to delete winner?",
+            text : "winner will be deleted.",
+            type : "error",
+            showcancelbutton: true,
+            showconfirmbutton: true,
+            showclosebutton: true,
+            dangermode : true,
+          })
+        });
 
-$(document).on('click', '#warning', function(e) {
-   Swal.fire({
-      title : "Are you sure to deactivate?",
-      text : "Select Entries to De-Activate",
-      type : "warning",
-      showCancelButton: true,
-      showConfirmButton: true,
-      showCloseButton: true,
-      dangerMode : true,
-   })
-});
+        $(document).on('click', '#warning', function(e) {
+           swal.fire({
+              title : "are you sure to deactivate?",
+              text : "select entries to de-activate",
+              type : "warning",
+              showcancelbutton: true,
+              showconfirmbutton: true,
+              showclosebutton: true,
+              dangermode : true,
+           })
+        });
 
-$(document).on('click', '#info', function(e) {
-   Swal.fire({
-      title : "Are you sure to deactivate?",
-      text : "Select Entries to De-Activate",
-      type : "info",
-      showCancelButton: true,
-      showConfirmButton: true,
-      showCloseButton: true,
-      dangerMode : true,
-   })
-});
+        $(document).on('click', '#info', function(e) {
+           swal.fire({
+              title : "are you sure to deactivate?",
+              text : "select entries to de-activate",
+              type : "info",
+              showcancelbutton: true,
+              showconfirmbutton: true,
+              showclosebutton: true,
+              dangermode : true,
+           })
+        });
 
-$(document).on('click', '#yes_internet', function(e) {
-   Swal.fire({
-      position: 'top-end',
-      type: 'success',
-      title: 'You are online',
-      showConfirmButton: true,
-      customClass: {
-         popup: 'internet_connection',
-      },
-   })
-});
+        $(document).on('click', '#yes_internet', function(e) {
+           swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'you are online',
+              showconfirmbutton: true,
+              customclass: {
+                 popup: 'internet_connection',
+              },
+           })
+        });
 
-$(document).on('click', '#no_internet', function(e) {
-   Swal.fire({
-      position: 'top-end',
-      type: 'error',
-      title: 'You are offline',
-      showConfirmButton: true,
-      customClass: {
-         popup: 'internet_connection',
-      },
-   })
-});
+        $(document).on('click', '#no_internet', function(e) {
+           swal.fire({
+              position: 'top-end',
+              type: 'error',
+              title: 'you are offline',
+              showconfirmbutton: true,
+              customclass: {
+                 popup: 'internet_connection',
+              },
+           })
+        });
 
-// For File Croping
-//var $uploadCrop;
-$('#croppie_cover_image_cover').croppie({
-   enableOrientation: true,
-   enforceBoundary: false,
-   viewport: {
-      width: 280,
-      height: 280,
-   },
-   boundary: {
-      width: 320,
-      height: 320
-   }
-});
+        // for file croping
+        //var $uploadcrop;
+        $('#croppie_cover_image_cover').croppie({
+           enableorientation: true,
+           enforceboundary: false,
+           viewport: {
+              width: 280,
+              height: 280,
+           },
+           boundary: {
+              width: 320,
+              height: 320
+           }
+        });
 
-var $uploadCrop;
-function readFile(input) {
-   if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-         $('.croppie_cover').addClass('croppie_cover_ready');
-         $uploadCrop.croppie('bind', {
-            url: e.target.result
-         }).then(function(){
-            console.log('jQuery bind complete');
-         });   
-      }
-      reader.readAsDataURL(input.files[0]);
-   }
-}
+        var $uploadcrop;
+        function readfile(input) {
+           if (input.files && input.files[0]) {
+              var reader = new filereader();
+              reader.onload = function (e) {
+                 $('.croppie_cover').addclass('croppie_cover_ready');
+                 $uploadcrop.croppie('bind', {
+                    url: e.target.result
+                 }).then(function(){
+                    console.log('jquery bind complete');
+                 });
+              }
+              reader.readasdataurl(input.files[0]);
+           }
+        }
 
-$uploadCrop = $('#croppie_cover_image_file').croppie({
-   enableOrientation: true,
-   enforceBoundary: false,
-   viewport: {
-      width: 280,
-      height: 280,
-   },
-   boundary: {
-      width: 320,
-      height: 320
-   }
-});
+        $uploadcrop = $('#croppie_cover_image_file').croppie({
+           enableorientation: true,
+           enforceboundary: false,
+           viewport: {
+              width: 280,
+              height: 280,
+           },
+           boundary: {
+              width: 320,
+              height: 320
+           }
+        });
 
-$(function(){
+        $(function(){
 
-   tooltip.init();
+           tooltip.init();
 
-   $('.select2').select2({
-      width: "100%",
-      templateSelection: iformat,
-      templateResult: iformat,
-      allowHtml: true
-   });
-   
-   $('#croppie_cover_image_file').on('change', function () { readFile(this); });
+           $('.select2').select2({
+              width: "100%",
+              templateselection: iformat,
+              templateresult: iformat,
+              allowhtml: true
+           });
 
-   $('.croppie_cover_image_upload_close').click(function() {
-      $('.croppie_cover').removeClass('croppie_cover_ready');
-   });
+           $('#croppie_cover_image_file').on('change', function () { readfile(this); });
 
-   $('.vanilla-rotate').on('click', function(ev) {
-      $uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
-   });
-});
-</script>
+           $('.croppie_cover_image_upload_close').click(function() {
+              $('.croppie_cover').removeclass('croppie_cover_ready');
+           });
 
-
-        
-        <!-- START FOOTER SCRIPT  -->
-        
-        <!--  END FOOTER SCRIPT -->
-        
+           $('.vanilla-rotate').on('click', function(ev) {
+              $uploadcrop.croppie('rotate', parseint($(this).data('deg')));
+           });
+        });
+    </script>
 
 
-        <!-- ====================== -->
-        <!--  SPECIFIC PAGE SCRIPT  -->
-        <!-- ====================== -->
-        <script>
-$(function(){
 
-   
-    
-});
-</script>
-        <!-- ====================== -->
-        <!--  SPECIFIC PAGE SCRIPT  -->
-        <!-- ====================== -->
+    <!-- start footer script  -->
+    <!--  end footer script -->
+    <!-- ====================== -->
+    <!--  specific page script  -->
+    <!-- ====================== -->
+    <script>
+        $(function(){
 
 
-</body></html>
+
+        });
+    </script>
+    <!-- ====================== -->
+    <!--  specific page script  -->
+    <!-- ====================== -->
+
+
+</body>
+</html>

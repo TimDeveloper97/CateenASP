@@ -13,7 +13,7 @@ namespace API
     public class FoodService : ICrud<Model.Food>
     {
         private string _collection = "food";
-        private IMongoCollection<Model.Food> _fCollection;
+        private IMongoCollection<Model.Food>? _fCollection;
 
         protected IMongoCollection<Model.Food> FoodCollection 
         {
@@ -29,13 +29,13 @@ namespace API
         {
             if (FoodCollection != null)
             {
-                FoodCollection.InsertOne(t);
+                await FoodCollection.InsertOneAsync(t);
                 return true;
             }
             return false;
         }
 
-        public async Task<bool> Delete(ObjectId id)
+        public async Task<bool> Delete(string id)
         {
             if (FoodCollection != null)
             {
@@ -51,7 +51,7 @@ namespace API
             return result.Result;
         }
 
-        public async Task<bool> IsExist(ObjectId id)
+        public async Task<bool> IsExist(string id)
         {
             if (FoodCollection != null)
             {
@@ -61,15 +61,11 @@ namespace API
             return false;
         }
 
-        public async Task<Model.Food> Read(ObjectId id)
+        public async Task<Model.Food> Read(string id)
         {
-            if (FoodCollection != null)
-            {
-                var food = await FoodCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var food = await FoodCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-                return food;
-            }
-            return null;
+            return food;
         }
 
         public async Task<bool> Update(Model.Food t)

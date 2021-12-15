@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 #region Service
-builder.Services.AddTransient<ICrud<Food>, FoodService>();
-builder.Services.AddTransient<ICrud<User>, UserService>();
+//builder.Services.AddTransient<ICrud<Food>, FoodService>();
+//builder.Services.AddTransient<ICrud<User>, UserService>();
 #endregion
 
 var app = builder.Build();

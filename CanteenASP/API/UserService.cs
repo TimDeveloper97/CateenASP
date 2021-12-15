@@ -13,7 +13,7 @@ namespace API
     public class UserService : ICrud<User>
     {
         private string _collection = "user";
-        private IMongoCollection<User> _uCollection;
+        private IMongoCollection<User>? _uCollection;
 
         protected IMongoCollection<User> UserCollection
         {
@@ -34,7 +34,7 @@ namespace API
             return await Task.FromResult(false);
         }
 
-        public async Task<bool> Delete(ObjectId id)
+        public async Task<bool> Delete(string id)
         {
             if (UserCollection != null)
             {
@@ -50,7 +50,7 @@ namespace API
             return await Task.FromResult(result.Result);
         }
 
-        public async Task<bool> IsExist(ObjectId id)
+        public async Task<bool> IsExist(string id)
         {
             if (UserCollection != null)
             {
@@ -60,7 +60,7 @@ namespace API
             return await Task.FromResult(false);
         }
 
-        public async Task<User> Read(ObjectId id)
+        public async Task<User> Read(string id)
         {
             if (UserCollection != null)
             {

@@ -31,7 +31,6 @@ namespace CanteenASP.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Food food)
         {
-            food.Id = ObjectId.GenerateNewId();
             var result = await _foodService.Create(food);
             if(result)
             {
@@ -43,7 +42,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
-            var food = await _foodService.Read(new ObjectId(id));
+            var food = await _foodService.Read(id);
             return View(food);
         }
 
@@ -60,7 +59,7 @@ namespace CanteenASP.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            await _foodService.Delete(new ObjectId(id));
+            await _foodService.Delete(id);
             return RedirectToAction("Index");
         }
     }

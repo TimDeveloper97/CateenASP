@@ -87,5 +87,30 @@ namespace API
             var result = await UserCollection.ReplaceOneAsync(filter, user, options: new UpdateOptions() { IsUpsert = false });
             return result.IsAcknowledged;
         }
+        public async Task<bool> Register(User user)
+        {
+            if(UserCollection != null)
+            {
+                user.Password = Common.MD5Hash(user.Password);
+                user.DisplayName = user.LastName + " " + user.FirstName;
+                user.Description = "normal user";
+                await UserCollection.InsertOneAsync(user);
+                return true;
+            }
+            return false;
+        }
+        public async Task<Response<User>> Login(string username, string password)
+        {
+            if(UserCollection != null)
+            {
+                var user = await UserCollection.Find(x => x.UserName == username).FirstOrDefaultAsync();
+                if(user == null) 
+                    return new Response<User>(false, "User is not exist!", null);
+                if (user.Password != Common.MD5Hash(password).Substring(0,32)) 
+                    return new Response<User>(false, "Password is not correct!", null);
+                return new Response<User>(true, "Login successfully!", user);
+            }
+            return new Response<User>(false, "Connection Error!", null);
+        }
     }
 }

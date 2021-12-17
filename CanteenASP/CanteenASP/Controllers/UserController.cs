@@ -5,7 +5,7 @@ namespace CanteenASP.Controllers
 {
     public class UserController : Controller
     {
-        UserService _userService;
+        readonly UserService _userService;
         public UserController()
         {
             _userService = new UserService();   

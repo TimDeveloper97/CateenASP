@@ -12,7 +12,7 @@ namespace API
 {
     public class UserService : ICrud<User>
     {
-        private string _collection = "user";
+        private readonly string _collection = "user";
         private IMongoCollection<User>? _uCollection;
 
         protected IMongoCollection<User> UserCollection
@@ -108,8 +108,10 @@ namespace API
                 var user = await UserCollection.Find(x => x.UserName == username).FirstOrDefaultAsync();
                 if (user == null)
                     return new Response<User>(false, "User is not exist!", null);
-                if (user.Password != Common.MD5Hash(password).Substring(0, 32))
+
+                if (user.Password != Common.MD5Hash(password)[..32])
                     return new Response<User>(false, "Password is not correct!", null);
+
                 return new Response<User>(true, "Login successfully!", user);
             }
             return new Response<User>(false, "Connection Error!", null);

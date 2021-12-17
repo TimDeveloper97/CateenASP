@@ -9,7 +9,7 @@ namespace CanteenASP.Areas.Admin.Controllers
     [Area("Admin")]
     public class FoodController : Controller
     {
-        FoodService _foodService;
+        readonly FoodService _foodService;
 
         public FoodController()
         {
@@ -47,6 +47,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Obsolete]
         public async Task<IActionResult> Edit(Food food)
         {
             var result = await _foodService.Update(food);

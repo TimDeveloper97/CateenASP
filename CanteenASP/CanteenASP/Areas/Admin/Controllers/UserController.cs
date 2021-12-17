@@ -7,7 +7,7 @@ namespace CanteenASP.Areas.Admin.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
-        UserService _userService;
+        readonly UserService _userService;
 
         public UserController()
         {
@@ -30,7 +30,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         public async Task<IActionResult> Create(User user)
         {
             user.DisplayName = user.FirstName + " " + user.LastName;
-            user.Password = Common.MD5Hash(user.Password);
+            user.Password = Common.MD5Hash(input: user.Password);
 
             var result = await _userService.Create(user);
             if (result)

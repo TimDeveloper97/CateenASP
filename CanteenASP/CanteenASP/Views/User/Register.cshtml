@@ -44,7 +44,8 @@
     <!--bootstrap js-->
     <script src="~/js/popper.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
     <!-- scripts -->
     <script>
         var site_url    = "https://lotteryscreen.app";
@@ -66,9 +67,9 @@
                 </div>
             </div>
         </div>
-        <div class="progress rounded-0" style="height: 6px;">
+        @*<div class="progress rounded-0" style="height: 6px;">
             <div class="progress-bar w-60" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        </div>*@
     </div>
 
     <div class="page_content_wrap p-0">
@@ -79,68 +80,75 @@
         <div class="your-information py-md-6 p-4">
             <div class="my-container">
                 <div class="row pb-4">
-                    <form class="mt-4 w-100" method="post" asp-action="Register" asp-controller="User">
+                    <form class="mt-4 w-100 outline-form" method="post" asp-action="Register" asp-controller="User">
                         <div class="col">
-                            <div class="payment-form theme-color bg-white p-md-5 p-3">
+                            <div class="payment-form theme-color bg-white p-md-5 p-3 rg-form">
                                 <div class="payment-form mb-5">
-                                    <h5>your information</h5>
-                                    <p class="font-size-sm">please enter the following details to create a user account.</p>
+                                    <h4>Your information</h4>
+                                    <p style="font-size: 1rem;">please enter the following details to create a user account.</p>
                                 </div>
 
                                 <div class="row">
                                     <!-- first name -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="bank_name" class="text-dark">First name</label>
-                                            <input type="text" name="FirstName" id="first_name" required autofocus placeholder="" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            <input type="text" name="FirstName" id="first_name" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="bank_name">First name</label>
                                         </div>
                                     </div>
                                     <!-- last name -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="bank_name" class="text-dark">Fast name</label>
-                                            <input type="text" name="LastName" id="last_name" required autofocus placeholder="" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="LastName" id="last_name" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="bank_name">Last name</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!-- phone number -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="phone_number" class="text-dark">Phone number</label>
-                                            <input type="text" name="Phone" id="phone_number" required autofocus placeholder="0987654321" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="Phone" id="phone_number" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="phone_number">Phone number</label>
                                         </div>
                                     </div>
                                     <!-- address -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="address" class="text-dark">Address</label>
-                                            <input type="text" name="Address" id="address" required autofocus placeholder="" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="Address" id="address" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="address">Address</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!-- username -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username" class="text-dark">Username</label>
-                                            <input type="text" name="Username" id="username" required autofocus placeholder="" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="Username" id="username" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="username">Username</label>
                                         </div>
                                     </div>
                                     <!-- email address -->
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="email" class="text-dark">Email</label>
-                                            <input type="email" name="email" id="email" required autofocus placeholder="" class="form-control " autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="email" name="email" id="email" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="email">Email</label>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                         <!-- password -->
-                                        <div class="form-group">
-                                            <label for="password" class="text-dark">Password</label>
-                                            <input type="password" name="password" id="password" placeholder="" class="form-control " autocomplete="off" required autofocus>
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="password" name="password" id="password" placeholder=" " class="form-control " autocomplete="off" required autofocus>
+                                            <label for="password">Password</label>
                                             <!-- <div class="show_input_field">
                                                 <div class="checkbox_btn btn-group-toggle" data-toggle="buttons">
                                                 <label class="btn btn-outline-secondary">
@@ -152,10 +160,16 @@
                                     </div>
                                     <div class="col-md-6">
                                         <!-- confirm password -->
-                                        <div class="form-group">
-                                            <label for="password_confirmation" class="text-dark">Confirm password</label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation" required autofocus class="form-control" autocomplete="off">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder=" " required autofocus class="form-control" autocomplete="off">
+                                            <label for="password_confirmation">Confirm password</label>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                    <span id="passwordMessage"></span>
+                                
                                     </div>
                                 </div>
                             </div>
@@ -454,12 +468,8 @@
     <!-- ====================== -->
     <!--  specific page script  -->
     <!-- ====================== -->
-    <script>
-        $(function(){
-
-
-
-        });
+    <script src="~/js/script.js">
+       
     </script>
     <!-- ====================== -->
     <!--  specific page script  -->

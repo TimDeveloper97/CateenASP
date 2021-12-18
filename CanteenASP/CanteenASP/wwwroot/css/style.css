@@ -163,6 +163,10 @@
     padding: 0 40px;
     text-align: center;
 }
+.card a{
+    text-decoration: none;
+    color: unset;
+}
 
 .card button {
     width: 100%;
@@ -170,7 +174,7 @@
     border-radius: 20px;
     color: white;
     background-color: #4d7cc9;
-    border: 1px solid blue;
+    border: 1px solid gray;
 }
 
 /* end css for home/index */

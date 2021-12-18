@@ -18,6 +18,6 @@ namespace Model
         public string? Description { get; set; }
         public string? Image { get; set; }
         public string? SideDishes { get; set; }
-        
+        public MealTime MealTime { get; set; }
     }
 }

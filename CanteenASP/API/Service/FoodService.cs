@@ -83,5 +83,10 @@ namespace API
             var result = await FoodCollection.ReplaceOneAsync(filter, food, options: new UpdateOptions() { IsUpsert = false });
             return result.IsAcknowledged;
         }
+        public async Task<List<Food>> GetFoodByMealTime(MealTime mealTime)
+        {
+            var foods = await FoodCollection.Find(x => x.MealTime == mealTime).ToListAsync();
+            return foods;
+        }
     }
 }

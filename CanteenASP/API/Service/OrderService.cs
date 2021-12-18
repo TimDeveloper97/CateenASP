@@ -95,5 +95,35 @@ namespace API
             var all = await GetAll();
             return all.Where(x => x.OrderTime.Date == date.Date && x.Type == mealTime)?.ToList();
         }
+
+        private string ExportCsvWithList(List<Order> orders)
+        {
+            var csv = new StringBuilder();
+
+            //header
+            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Price, Order Time");
+
+            //body
+            int index = 1;
+            foreach (var order in orders)
+            {
+                var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", index++, order.User.DisplayName, order.User.Phone,
+                                            order.Food.Name, order.Food.SideDishes, order.Food.Price, order.OrderTime);
+                csv.AppendLine(newLine);
+            }
+
+            return csv.ToString();
+        }
+
+        public async Task<string> ExportCsv()
+        {
+            return ExportCsvWithList(await GetAll());
+        }
+
+        public async Task<string> ExportCsv(DateTime date)
+        {
+            var result = await GetAllByDate(date);
+            return ExportCsvWithList(result);
+        }
     }
 }

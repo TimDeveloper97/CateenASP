@@ -10,7 +10,8 @@ namespace Model
 {
     public enum MealTime
     {
-        Breakfast = 0,
+        Null = -1,
+        Breakfast = 1,
         Lunch,
         Dinner,
     }

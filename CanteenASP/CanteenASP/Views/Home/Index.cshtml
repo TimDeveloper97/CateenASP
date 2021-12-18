@@ -2,7 +2,88 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model List<Model.Food>
+
+
+@section Scripts{
+<script>
+        const prev  = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+
+    const track = document.querySelector('.track');
+
+    let carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+
+    window.addEventListener('resize', () => {
+      carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+    })
+
+    let index = 0;
+
+    next.addEventListener('click', () => {
+      index++;
+      prev.classList.add('show');
+      track.style.transform = `translateX(-${index * carouselWidth}px)`;
+
+      if (track.offsetWidth - (index * carouselWidth) < carouselWidth) {
+        next.classList.add('hide');
+      }
+    })
+
+    prev.addEventListener('click', () => {
+      index--;
+      next.classList.remove('hide');
+      if (index === 0) {
+        prev.classList.remove('show');
+      }
+      track.style.transform = `translateX(-${index * carouselWidth}px)`;
+    })
+
+</script>
+}
+
+
+
+<h2>Menu sáng</h2>
+<div class="carousel-container">
+    <div class="carousel-inner">
+        <div class="track">
+            @foreach (var item in Model)
+            {
+                if (item.MealTime == (Model.MealTime)1)
+                {
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="@item.Image"></a></div>
+                            <div class="info">
+                                <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                <h6>Món phụ: @item.SideDishes</h6>
+                                <div>
+                                    <span style="color: red;">@item.Price VNĐ</span>
+                                </div>
+                            </div>
+                            <p>
+                                <button>Đặt món</button>
+                            </p>
+                        </div>
+
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+    <div class="nav">
+        <button class="prev">
+            <i class="material-icons">
+                keyboard_arrow_left
+            </i>
+        </button>
+        <button class="next">
+            <i class="material-icons">
+                keyboard_arrow_right
+            </i>
+        </button>
+    </div>
 </div>

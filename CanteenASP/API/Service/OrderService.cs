@@ -83,5 +83,17 @@ namespace API
             var result = await OrderCollection.ReplaceOneAsync(filter, order, options: new UpdateOptions() { IsUpsert = false });
             return result.IsAcknowledged;
         }
+
+        public async Task<List<Order>?> GetAllByDate(DateTime date)
+        {
+            var all = await GetAll();
+            return all.Where(x => x.OrderTime.Date == date.Date)?.ToList();
+        }
+
+        public async Task<List<Order>?> GetAllByMealTime(DateTime date, MealTime mealTime)
+        {
+            var all = await GetAll();
+            return all.Where(x => x.OrderTime.Date == date.Date && x.Type == mealTime)?.ToList();
+        }
     }
 }

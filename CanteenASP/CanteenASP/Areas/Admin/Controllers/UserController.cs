@@ -43,7 +43,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
-            var food = await _userService.Read(id);
+            var food = await _userService.GetItem(id);
             return View(food);
         }
 

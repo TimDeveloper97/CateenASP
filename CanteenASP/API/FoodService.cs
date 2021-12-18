@@ -61,7 +61,7 @@ namespace API
             return false;
         }
 
-        public async Task<Model.Food> Read(string id)
+        public async Task<Model.Food> GetItem(string id)
         {
             var food = await FoodCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 

@@ -60,7 +60,7 @@ namespace API
             return await Task.FromResult(false);
         }
 
-        public async Task<User> Read(string id)
+        public async Task<User> GetItem(string id)
         {
             if (UserCollection != null)
             {

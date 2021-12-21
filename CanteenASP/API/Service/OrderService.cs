@@ -29,6 +29,10 @@ namespace API
         {
             if (OrderCollection != null)
             {
+                if(t.Food.MealTime != Common.TimeToEnum(t.OrderTime))
+                {
+                    return false;
+                }
                 await OrderCollection.InsertOneAsync(t);
                 return true;
             }
@@ -77,7 +81,7 @@ namespace API
             var filter = Builders<Order>.Filter.Eq("_id", new ObjectId(t.Id));
             order.Food = t.Food;
             order.User = t.User;
-            order.Type = t.Type;
+            //order.Type = t.Type;
             order.OrderTime = t.OrderTime;
 
             var result = await OrderCollection.ReplaceOneAsync(filter, order, options: new UpdateOptions() { IsUpsert = false });
@@ -93,7 +97,7 @@ namespace API
         public async Task<List<Order>?> GetAllByMealTime(DateTime date, MealTime mealTime)
         {
             var all = await GetAll();
-            return all.Where(x => x.OrderTime.Date == date.Date && x.Type == mealTime)?.ToList();
+            return all.Where(x => x.OrderTime.Date == date.Date && x.Food.MealTime == mealTime)?.ToList();
         }
 
         private string ExportCsvWithList(List<Order> orders)
@@ -124,6 +128,11 @@ namespace API
         {
             var result = await GetAllByDate(date);
             return ExportCsvWithList(result);
+        }
+        public async Task<List<Order>> GetOrdersByUser(string userId)
+        {
+            var orders = await OrderCollection.Find(x => x.User.Id == userId).ToListAsync();
+            return orders;
         }
     }
 }

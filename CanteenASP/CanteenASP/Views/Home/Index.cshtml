@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Model
+@{
     ViewData["Title"] = "Home Page";
+    var listOrder = (List<Order>)ViewBag.Orders;
 }
 
 @model List<Model.Food>
@@ -42,48 +44,144 @@
 </script>
 }
 
+<div class="container">
+    @await Component.InvokeAsync("Meals", listOrder)
 
 
-<h2>Menu sáng</h2>
-<div class="carousel-container">
-    <div class="carousel-inner">
-        <div class="track">
-            @foreach (var item in Model)
-            {
-                if (item.MealTime == (Model.MealTime)1)
+    <!--Template breakfast-->
+    <h2>Breakfast Menu</h2>
+    <div class="carousel-container">
+        <div class="carousel-inner">
+            <div class="track">
+                @foreach (var item in Model)
                 {
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
-                            <div class="info">
-                                <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
-                                <h6>Món phụ: @item.SideDishes</h6>
-                                <div>
-                                    <span style="color: red;">@item.Price VNĐ</span>
+                    if (item.MealTime == (Model.MealTime)1)
+                    {
+                        <div class="card-container">
+                            <div class="card">
+                                <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
+                                <div class="info">
+                                    <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                    <h6>Món phụ: @item.SideDishes</h6>
+                                    <div>
+                                        <span style="color: red;">@item.Price VNĐ</span>
+                                    </div>
                                 </div>
+                                <p>
+                                    <a class="order-button" asp-action="Order" asp-route-id="@item.Id">Order</a>
+                                </p>
                             </div>
-                            <p>
-                                <button>Đặt món</button>
-                            </p>
+
                         </div>
-
-                    </div>
+                    }
                 }
-            }
 
 
+            </div>
+        </div>
+        <div class="nav">
+            <button class="prev">
+                <i class="material-icons">
+                    keyboard_arrow_left
+                </i>
+            </button>
+            <button class="next">
+                <i class="material-icons">
+                    keyboard_arrow_right
+                </i>
+            </button>
         </div>
     </div>
-    <div class="nav">
-        <button class="prev">
-            <i class="material-icons">
-                keyboard_arrow_left
-            </i>
-        </button>
-        <button class="next">
-            <i class="material-icons">
-                keyboard_arrow_right
-            </i>
-        </button>
+
+    <!--End template breakfast-->
+    <!--Template lunch-->
+    <h2>Lunch Menu</h2>
+    <div class="carousel-container">
+        <div class="carousel-inner">
+            <div class="track">
+                @foreach (var item in Model)
+                {
+                    if (item.MealTime == (Model.MealTime)2)
+                    {
+                        <div class="card-container">
+                            <div class="card">
+                                <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
+                                <div class="info">
+                                    <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                    <h6>Món phụ: @item.SideDishes</h6>
+                                    <div>
+                                        <span style="color: red;">@item.Price VNĐ</span>
+                                    </div>
+                                </div>
+                                <p>
+                                    <a class="order-button" asp-action="Order" asp-route-id="@item.Id">Order</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+        <div class="nav">
+            <button class="prev">
+                <i class="material-icons">
+                    keyboard_arrow_left
+                </i>
+            </button>
+            <button class="next">
+                <i class="material-icons">
+                    keyboard_arrow_right
+                </i>
+            </button>
+        </div>
     </div>
+    <!--End template lunch-->
+    <!--Template Dinner-->
+    <h2>Dinner Menu</h2>
+    <div class="carousel-container">
+        <div class="carousel-inner">
+            <div class="track">
+                @foreach (var item in Model)
+                {
+                    if (item.MealTime == (Model.MealTime)3)
+                    {
+                        <div class="card-container">
+                            <div class="card">
+                                <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
+                                <div class="info">
+                                    <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                    <h6>Món phụ: @item.SideDishes</h6>
+                                    <div>
+                                        <span style="color: red;">@item.Price VNĐ</span>
+                                    </div>
+                                </div>
+                                <p>
+                                    <a class="order-button" asp-action="Order" asp-route-id="@item.Id">Order</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+        <div class="nav">
+            <button class="prev">
+                <i class="material-icons">
+                    keyboard_arrow_left
+                </i>
+            </button>
+            <button class="next">
+                <i class="material-icons">
+                    keyboard_arrow_right
+                </i>
+            </button>
+        </div>
+    </div>
+    <!--End template dinner-->
 </div>

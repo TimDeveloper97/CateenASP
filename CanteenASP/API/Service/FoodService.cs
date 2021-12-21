@@ -79,6 +79,7 @@ namespace API
             food.Description = t.Description;
             food.Price = t.Price;
             food.SideDishes = t.SideDishes;
+            food.Image = t.Image;
 
             var result = await FoodCollection.ReplaceOneAsync(filter, food, options: new UpdateOptions() { IsUpsert = false });
             return result.IsAcknowledged;

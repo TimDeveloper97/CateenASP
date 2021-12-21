@@ -5,5 +5,87 @@
   "Name": "Cơm rang dưa bò",
   "Price": "30000",
   "Description": "ádaafasa",
-  "SideDishes": "àasasss"
+  "SideDishes": "àasasss",
+  "Image": "",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61bd9e25fbc09cbd1c95d1da"
+  },
+  "Name": "Cơm rang Dương Châu",
+  "Price": "40000",
+  "Description": "Món ăn ngon",
+  "SideDishes": "àasasss",
+  "Image": "",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61bd9e3ffbc09cbd1c95d1db"
+  },
+  "Name": "Nem rán",
+  "Price": "20000",
+  "Description": "Món ăn ngon",
+  "SideDishes": "àasasss",
+  "Image": "",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61bd9e4cfbc09cbd1c95d1dc"
+  },
+  "Name": "Nem chua rán",
+  "Price": "25000",
+  "Description": "Món ăn ngon",
+  "SideDishes": "àasasss",
+  "Image": "",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c052b0f57d3a1f2a118659"
+  },
+  "Name": "Bánh mì Pate",
+  "Price": "15000",
+  "Description": "Bánh mì được cho thêm Pate",
+  "Image": "015352_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05404f57d3a1f2a11865a"
+  },
+  "Name": "Bánh mì xúc xích",
+  "Price": "20000",
+  "Description": "Bánh mì được cho thêm xúc xích",
+  "Image": "015932_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05435f57d3a1f2a11865b"
+  },
+  "Name": "Bánh cuốn nóng",
+  "Price": "25000",
+  "Description": "Bánh cuốn nóng hổi",
+  "Image": "020021_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05453f57d3a1f2a11865c"
+  },
+  "Name": "Mì xào bò",
+  "Price": "40000",
+  "Description": "Mì xào với thịt bò tươi ngon",
+  "Image": "020051_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05477f57d3a1f2a11865d"
+  },
+  "Name": "Trứng vịt lộn",
+  "Price": "25000",
+  "Description": "5 quả trứng vịt lộn cho buổi sáng",
+  "Image": "020127_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
 }]

@@ -21,6 +21,7 @@ namespace CanteenASP.Controllers
             var res = await _userService.Login(username, password);
             if(res.Success)
             {
+                HttpContext.Session.SetString("UserId",res.Result.Id);
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Message = res.Message;

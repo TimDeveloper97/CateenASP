@@ -1,6 +1,7 @@
 ﻿using API;
 using CanteenASP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -10,19 +11,26 @@ namespace CanteenASP.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FoodService _foodService;
-        
+        private readonly UserService _userService;
+        private readonly OrderService _orderService;
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _foodService = new FoodService();
-            
+            _userService = new UserService();
+            _orderService = new OrderService();
         }
 
         public async Task<IActionResult> Index()
         {
             var foods = await _foodService.GetAll();
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+            var userId = HttpContext.Session.GetString("UserId");
+            if(userId != null)
+            {
+                ViewBag.Orders = await _orderService.GetOrdersByUser(userId);
+            }
             foreach(var item in foods)
             {
                 item.Price = double.Parse(item.Price).ToString("#,###", cul.NumberFormat);
@@ -36,6 +44,30 @@ namespace CanteenASP.Controllers
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
             food.Price = double.Parse(food.Price).ToString("#,###",cul.NumberFormat);
             return View(food);
+        }
+
+        public async Task<IActionResult> Order(string id)
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+            if(userId == null)
+            {
+                return RedirectToAction("Index", "User");
+            }
+            var user = await _userService.GetItem(userId);
+            var food = await _foodService.GetItem(id);
+            var orderTime = DateTime.Now;
+            var order = new Order()
+            {
+                User = user,
+                Food = food,
+                OrderTime = orderTime,
+            };
+            var res = await _orderService.Create(order);
+            if (res)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
         public IActionResult Privacy()
         {

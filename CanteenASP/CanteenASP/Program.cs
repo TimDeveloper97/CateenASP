@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSession(option =>
+{
+    option.IdleTimeout = TimeSpan.FromMinutes(30);
+});
 #region Service
 //builder.Services.AddTransient<ICrud<Food>, FoodService>();
 //builder.Services.AddTransient<ICrud<User>, UserService>();
@@ -28,6 +31,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
+//app.MapRazorPages();
 app.MapControllerRoute(
                     name: "admin",
                     pattern: "{area:exists}/{controller=Food}/{action=Index}/{id?}");

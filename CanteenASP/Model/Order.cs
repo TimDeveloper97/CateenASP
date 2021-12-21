@@ -29,7 +29,7 @@ namespace Model
         public string? Id { get; set; }
         public User? User { get; set; }
         public Food? Food { get; set; }
-        public MealTime Type { get; set; }
+       
         public DateTime OrderTime { get; set; }
     }
 }

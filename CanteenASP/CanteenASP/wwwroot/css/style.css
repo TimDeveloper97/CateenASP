@@ -55,7 +55,7 @@
 
 .carousel-container {
     width: 1380px;
-    margin: 50px auto;
+    margin: 20px auto;
     min-height: 200px;
     position: relative;
 }
@@ -168,13 +168,20 @@
     color: unset;
 }
 
-.card button {
-    width: 100%;
-    height: 40px;
+.order-button {
+    padding: 5px 45px;
     border-radius: 20px;
-    color: white;
+    color: white!important;
     background-color: #4d7cc9;
     border: 1px solid gray;
 }
 
+.order-item {
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+body{
+    background-color: whitesmoke;
+}
 /* end css for home/index */

@@ -55,7 +55,6 @@ namespace CanteenASP.Areas.Admin.Controllers
                 }
             }
 
-
             var result = await _foodService.Create(food);
             if(result)
             {
@@ -73,8 +72,35 @@ namespace CanteenASP.Areas.Admin.Controllers
 
         [HttpPost]
         [Obsolete]
-        public async Task<IActionResult> Edit(Food food)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Edit(Food food, List<IFormFile> postedFiles)
         {
+            if (string.IsNullOrEmpty(food.Name)
+                || string.IsNullOrEmpty(food.Price)
+                || string.IsNullOrEmpty(food.SideDishes))
+                return View(food);
+
+            string path = Path.Combine(_pWwwRoot, "assets");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            if (postedFiles.Count != 0)
+            {
+                if(!string.IsNullOrEmpty(food.Image))
+                {
+                    System.IO.File.Delete(Path.Combine(path, food.Image));
+                }
+
+                var filename = DateTime.Now.ToString("HHmmss_ddMMyyyy") + ".png";
+                food.Image = filename;
+                using (FileStream stream = new FileStream(Path.Combine(path, filename), FileMode.Create))
+                {
+                    postedFiles[0].CopyTo(stream);
+                }
+            }
+
             var result = await _foodService.Update(food);
             if (result)
             {

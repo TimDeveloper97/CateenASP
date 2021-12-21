@@ -35,6 +35,8 @@ namespace CanteenASP.Controllers
             {
                 item.Price = double.Parse(item.Price).ToString("#,###", cul.NumberFormat);
             }
+            ViewData["Message"] = TempData["Message"];
+            ViewData["Flag"] = TempData["Flag"];
             return View(foods);
         }
 
@@ -67,6 +69,8 @@ namespace CanteenASP.Controllers
             {
                 return RedirectToAction("Index");
             }
+            TempData["Message"] = "Time to order this meal is up!";
+            TempData["Flag"] = 1;
             return RedirectToAction("Index");
         }
         public IActionResult Privacy()

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
     var listOrder = (List<Order>)ViewBag.Orders;
+    var flag = ViewData["Flag"];
 }
 
 @model List<Model.Food>
@@ -40,11 +41,40 @@
       }
       track.style.transform = `translateX(-${index * carouselWidth}px)`;
     })
+    var fl = @flag;
+     $(document).ready(function() {
+                $(function () {
+                     if(fl == 1){
+                         $('#samplePopup').modal('show');
+                     }
+                });
+            });
 
 </script>
 }
 
 <div class="container">
+
+
+    <div class="modal fade" id="samplePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> </h4>
+                </div>
+                <div class="modal-body">
+                    @ViewData["Message"]
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
     @await Component.InvokeAsync("Meals", listOrder)
 
 

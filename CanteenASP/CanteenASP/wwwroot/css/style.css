@@ -184,4 +184,15 @@
 body{
     background-color: whitesmoke;
 }
+
+.carousel-item img{
+    height: 350px;
+   
+}
+.w-70{
+    width: 70%!important;
+}
+.p-30{
+    padding-left: 30%;
+}
 /* end css for home/index */

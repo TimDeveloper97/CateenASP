@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Model.Order>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<div>
+    <h1>View</h1>
+    @*<input type="button" value="Export" class="btn btn-success" onclick="location.href='@Url.Action("Export", "Order")'" />*@
+</div>
+
+        <div>  
+            @using (Html.BeginForm("Export", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))  
+            {  
+                <div>  
+                    <input type="submit" value="Export" class="btn btn-success" />  
+                </div>  
+            }  
+        </div> 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.DisplayName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.SideDishes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.MealTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.SideDishes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food.MealTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTime)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

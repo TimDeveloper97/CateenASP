@@ -10,7 +10,23 @@
 
 @section Scripts{
 <script>
-        const prev  = document.querySelector('.prev');
+
+
+
+
+
+       
+       document.addEventListener("DOMContentLoaded" , function() {
+            var fl = @flag;
+                    
+                         if(fl == 1){
+                             $('#samplePopup').modal('show');
+                         }else{
+                             $('#samplePopup').modal('hide');
+                         }
+
+                    
+                     const prev  = document.querySelector('.prev');
     const next = document.querySelector('.next');
 
     const track = document.querySelector('.track');
@@ -41,14 +57,7 @@
       }
       track.style.transform = `translateX(-${index * carouselWidth}px)`;
     })
-    var fl = @flag;
-     $(document).ready(function() {
-                $(function () {
-                     if(fl == 1){
-                         $('#samplePopup').modal('show');
-                     }
                 });
-            });
 
 </script>
 }

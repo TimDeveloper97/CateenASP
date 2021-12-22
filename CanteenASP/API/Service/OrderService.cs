@@ -105,14 +105,14 @@ namespace API
             var csv = new StringBuilder();
 
             //header
-            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Price, Order Time");
+            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Meal Time, Price, Order Time");
 
             //body
             int index = 1;
             foreach (var order in orders)
             {
-                var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", index++, order.User.DisplayName, order.User.Phone,
-                                            order.Food.Name, order.Food.SideDishes, order.Food.Price, order.OrderTime);
+                var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", index++, order.User.DisplayName, order.User.Phone,
+                                            order.Food.Name, order.Food.SideDishes, order.Food.MealTime,order.Food.Price, order.OrderTime);
                 csv.AppendLine(newLine);
             }
 

@@ -73,6 +73,11 @@ namespace CanteenASP.Controllers
             TempData["Flag"] = 1;
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> CancelOrder(string id)
+        {
+
+            return RedirectToAction("Index");
+        }
         public IActionResult Privacy()
         {
             return View();

@@ -15,8 +15,9 @@ namespace CanteenASP.Areas.Admin.Controllers
             _pWwwRoot = Path.Combine(webHostEnviroment.ContentRootPath, "wwwroot");
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string mealTime, string startTime, string endTime)
         {
+
             var lOrder = await _orderService.GetAll();
             return View(lOrder);
         }

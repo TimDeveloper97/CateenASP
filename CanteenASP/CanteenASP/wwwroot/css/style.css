@@ -58,6 +58,7 @@
     margin: 20px auto;
     min-height: 200px;
     position: relative;
+    margin-left: -40px;
 }
 
 @media screen and (max-width: 768px) {
@@ -183,5 +184,29 @@
 
 body{
     background-color: whitesmoke;
+}
+
+.carousel-item img{
+    height: 500px;
+   
+}
+.w-70{
+    width: 70%!important;
+}
+.p-30{
+    padding-left: 30%;
+}
+
+.order{
+    height: 230px;
+    margin-bottom: 70px;
+}
+.banner{
+    padding: 0;
+    margin-bottom: 50px;
+}
+.header-item{
+    color: #fff!important;
+    padding: 0!important;
 }
 /* end css for home/index */

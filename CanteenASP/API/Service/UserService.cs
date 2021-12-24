@@ -81,6 +81,7 @@ namespace API
             user.LastName = t.LastName;
             user.FirstName = t.FirstName;
             user.Description = t.Description;
+            user.Address = t.Address;
             user.Phone = t.Phone;
             user.DisplayName = t.DisplayName;
 

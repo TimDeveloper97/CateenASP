@@ -23,7 +23,7 @@ namespace CanteenASP.Controllers
             {
                 HttpContext.Session.SetString("UserId",res.Result.Id);
                 
-                if (res.Result.Description == "Admin")
+                if (res.Result.Description.ToLower() == "admin")
                 {
                     HttpContext.Session.SetString("Role", "Admin");
                     return RedirectToAction("Index", "Food",new {area = "Admin"});

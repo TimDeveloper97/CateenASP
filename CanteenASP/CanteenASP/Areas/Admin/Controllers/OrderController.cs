@@ -2,6 +2,7 @@
 using CanteenASP.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using System.Text;
 
 namespace CanteenASP.Areas.Admin.Controllers
 {
@@ -10,12 +11,11 @@ namespace CanteenASP.Areas.Admin.Controllers
     {
         readonly OrderService _orderService;
         string _pWwwRoot;
-        static List<Order> _tmpOrders;
+        static List<Order> _tmpOrders = new List<Order>();
 
         public OrderController(IHostEnvironment webHostEnviroment)
         {
             this._orderService = new OrderService();
-            _tmpOrders = new List<Order>();
             _pWwwRoot = Path.Combine(webHostEnviroment.ContentRootPath, "wwwroot");
         }
 
@@ -57,7 +57,7 @@ namespace CanteenASP.Areas.Admin.Controllers
             }
 
             var filename = DateTime.Now.ToString("Export_HHmmss_ddMMyyyy") + ".csv";
-            System.IO.File.WriteAllText(Path.Combine(path, filename), result);  
+            System.IO.File.WriteAllText(Path.Combine(path, filename), result, Encoding.UTF8);  
 
             return RedirectToAction("Index");
         }

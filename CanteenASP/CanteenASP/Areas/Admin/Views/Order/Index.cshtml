@@ -64,17 +64,19 @@
         </div>
         <div class="col-md-3">
             <button type="submit" class="btn btn-success">Filter</button>
+             <a asp-route-startTime="" asp-route-endTime="" asp-route-mealTime="" class="btn btn-success">Refresh</a>
         </div>
     </div>
 </form>
 
-<div>
+<div class="row">
     @using (Html.BeginForm("Export", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div>
+        <div class="col-md-3">
             <input type="submit" value="Export" class="btn btn-success" />
         </div>
     }
+   
 </div>
 
 <table class="table">

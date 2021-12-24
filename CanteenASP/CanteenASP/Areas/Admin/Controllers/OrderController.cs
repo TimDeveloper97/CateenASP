@@ -1,11 +1,12 @@
 ﻿using API;
+using CanteenASP.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         readonly OrderService _orderService;
         string _pWwwRoot;
@@ -21,7 +22,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         public async Task<IActionResult> Index(string mealTime, string startTime, string endTime)
         {
             var lOrder = await _orderService.GetAll();
-            if(!string.IsNullOrEmpty(mealTime))
+            if(!string.IsNullOrEmpty(mealTime) || mealTime == "--Select meal time--")
                 lOrder = lOrder.Where(x => x.Food.MealTime.ToString() == mealTime).ToList();
 
             if (!string.IsNullOrEmpty(startTime))

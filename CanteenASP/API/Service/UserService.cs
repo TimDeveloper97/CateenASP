@@ -84,7 +84,9 @@ namespace API
             user.Address = t.Address;
             user.Phone = t.Phone;
             user.DisplayName = t.DisplayName;
-
+            if(!string.IsNullOrEmpty(t.Password)) {
+                user.Password = t.Password;
+            }
             var result = await UserCollection.ReplaceOneAsync(filter, user, options: new UpdateOptions() { IsUpsert = false });
             return result.IsAcknowledged;
         }
@@ -127,7 +129,7 @@ namespace API
                 return new Response<object>(false, "User doesn't exist", null);
             else
             {
-                if (!string.IsNullOrEmpty(validatePhone) || user.Phone != validatePhone)
+                if (string.IsNullOrEmpty(validatePhone) || user.Phone != validatePhone)
                     return new Response<object>(false, "Validate phone worng", null);
                 else
                 {

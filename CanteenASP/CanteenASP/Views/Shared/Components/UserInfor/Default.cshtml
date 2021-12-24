@@ -1,0 +1,14 @@
+﻿@using Model
+@model User
+
+@if(Model == null){
+    <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Index">Login</a>
+    </li>
+}
+else{
+    <li class="nav-item" style="margin-left:30px; padding-top:8px">Hello @Model.DisplayName</li>
+    <li class="nav-item" style="margin-left: 20px"><a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Logout">Logout</a></li>
+    <li class="nav-item"><a class="nav-link text-white">Personal infor</a></li>
+    <li class="nav-item"><a class="nav-link text-white">Reset password</a></li>
+}

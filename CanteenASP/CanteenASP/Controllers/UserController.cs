@@ -8,7 +8,7 @@ namespace CanteenASP.Controllers
         readonly UserService _userService;
         public UserController()
         {
-            _userService = new UserService();   
+            _userService = new UserService();
         }
         [HttpGet]
         public IActionResult Index()
@@ -19,14 +19,14 @@ namespace CanteenASP.Controllers
         public async Task<IActionResult> Index(string username, string password)
         {
             var res = await _userService.Login(username, password);
-            if(res.Success)
+            if (res.Success)
             {
-                HttpContext.Session.SetString("UserId",res.Result.Id);
-                
+                HttpContext.Session.SetString("UserId", res.Result.Id);
+
                 if (res.Result.Description == "Admin")
                 {
                     HttpContext.Session.SetString("Role", "Admin");
-                    return RedirectToAction("Index", "Food",new {area = "Admin"});
+                    return RedirectToAction("Index", "Food", new { area = "Admin" });
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -48,9 +48,29 @@ namespace CanteenASP.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                
+
             }
             return View(user);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Forgot()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Forgot(Model.User user)
+        {
+            var res = await _userService.ResetPassword(user.UserName, user.Password, user.Phone);
+            if (res.Success)
+            {
+                return RedirectToAction("Index", "User");
+            }
+            return View();
         }
     }
 }

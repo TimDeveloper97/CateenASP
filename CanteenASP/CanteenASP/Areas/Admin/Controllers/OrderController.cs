@@ -16,9 +16,13 @@ namespace CanteenASP.Areas.Admin.Controllers
         }
 
         public async Task<IActionResult> Index(string mealTime, string startTime, string endTime)
+        
         {
-
+            
             var lOrder = await _orderService.GetAll();
+            ViewData["MealTime"] = mealTime;
+            ViewBag.StartTime = startTime;
+            ViewBag.EndTime = endTime;
             return View(lOrder);
         }
 

@@ -21,9 +21,9 @@ namespace CanteenASP.Controllers
             var res = await _userService.Login(username, password);
             if (res.Success)
             {
-                HttpContext.Session.SetString("UserId", res.Result.Id);
-
-                if (res.Result.Description == "Admin")
+                HttpContext.Session.SetString("UserId",res.Result.Id);
+                
+                if (res.Result.Description.ToLower() == "admin")
                 {
                     HttpContext.Session.SetString("Role", "Admin");
                     return RedirectToAction("Index", "Food", new { area = "Admin" });

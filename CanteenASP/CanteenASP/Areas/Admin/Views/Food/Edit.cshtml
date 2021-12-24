@@ -38,10 +38,18 @@
                 <span asp-validation-for="SideDishes" class="text-danger"></span>
             </div>
             <div class="form-group">
+				<label asp-for="MealTime" class="control-label"></label>
+				<select asp-for="MealTime" class="form-select">
+					<option value="1">Breakfast</option>
+					<option value="2">Lunch</option>
+					<option value="3">Dinner</option>
+				</select>
+			</div>
+            <div class="form-group">
 				<div class="custom-file">
 					<input asp-for="Image" type="file" name="postedFiles" class="custom-file-input" id="customFile">
 				</div>
-                <input asp-for="Image" class="form-control" />
+                
 				<span asp-validation-for="Image" class="text-danger"></span>
 			</div>
             <div class="form-group">

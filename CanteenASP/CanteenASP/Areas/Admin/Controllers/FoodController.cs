@@ -1,5 +1,6 @@
 ﻿using API;
 using API.Interface;
+using CanteenASP.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using MongoDB.Bson;
@@ -7,7 +8,7 @@ using MongoDB.Bson;
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FoodController : Controller
+    public class FoodController : BaseController
     {
         readonly FoodService _foodService;
         string _pWwwRoot;

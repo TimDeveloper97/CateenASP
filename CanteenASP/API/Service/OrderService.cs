@@ -100,7 +100,7 @@ namespace API
             return all.Where(x => x.OrderTime.Date == date.Date && x.Food.MealTime == mealTime)?.ToList();
         }
 
-        private string ExportCsvWithList(List<Order> orders)
+        public Task<string> ExportCsvWithList(List<Order> orders)
         {
             var csv = new StringBuilder();
 
@@ -116,18 +116,18 @@ namespace API
                 csv.AppendLine(newLine);
             }
 
-            return csv.ToString();
+            return Task.FromResult(csv.ToString());
         }
 
         public async Task<string> ExportCsv()
         {
-            return ExportCsvWithList(await GetAll());
+            return await ExportCsvWithList(await GetAll());
         }
 
         public async Task<string> ExportCsv(DateTime date)
         {
             var result = await GetAllByDate(date);
-            return ExportCsvWithList(result);
+            return await ExportCsvWithList(result);
         }
         public async Task<List<Order>> GetOrdersByUser(string userId)
         {

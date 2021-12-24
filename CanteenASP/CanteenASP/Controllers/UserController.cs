@@ -22,6 +22,12 @@ namespace CanteenASP.Controllers
             if(res.Success)
             {
                 HttpContext.Session.SetString("UserId",res.Result.Id);
+                
+                if (res.Result.Description == "Admin")
+                {
+                    HttpContext.Session.SetString("Role", "Admin");
+                    return RedirectToAction("Index", "Food",new {area = "Admin"});
+                }
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Message = res.Message;

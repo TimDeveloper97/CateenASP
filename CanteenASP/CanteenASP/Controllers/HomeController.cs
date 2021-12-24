@@ -75,7 +75,12 @@ namespace CanteenASP.Controllers
         }
         public async Task<IActionResult> CancelOrder(string id)
         {
-
+            var res = await _orderService.Delete(id);
+            if (res)
+            {
+                TempData["Message"] = "Canceled order successfully!";
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
         public IActionResult Privacy()

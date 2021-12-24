@@ -43,7 +43,9 @@
       track.style.transform = `translateX(-${index * carouselWidth}px)`;
     })
 
-
+    setTimeout(function () {
+            $("#msgAlert").fadeOut('slow');
+        }, 2000);
 
 
 
@@ -114,6 +116,12 @@
         </div>
     </div>*@
 
+     @if (ViewData["Message"] != null)
+                    {
+                        <div id="msgAlert" class="alert alert-danger" role="alert">
+                            @ViewData["Message"]
+                        </div>
+                    }
 
     @await Component.InvokeAsync("Meals", listOrder)
 

@@ -1,11 +1,14 @@
 ﻿using API;
+using CanteenASP.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UserController : Controller
+    
+    public class UserController : BaseController
     {
         readonly UserService _userService;
 

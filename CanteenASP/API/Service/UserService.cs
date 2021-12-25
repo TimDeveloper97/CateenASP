@@ -121,7 +121,7 @@ namespace API
         }
 
         [Obsolete]
-        public async Task<Response<object>> ResetPassword(string username, string password, string validatePhone)
+        public async Task<Response<object>> ForgotPassword(string username, string password, string validatePhone)
         {
             var user = await UserCollection.Find(x => x.UserName == username).FirstOrDefaultAsync();
 
@@ -142,6 +142,45 @@ namespace API
                         return new Response<object>(false, "Change password fail", null);
                 }
             }
+        }
+        public async Task<Response<object>> ResetPassword(string userId, string oldPassword, string newPassword)
+        {
+            var user = await UserCollection.Find(x => x.Id == userId).FirstOrDefaultAsync();
+            if(user == null)
+            {
+                return new Response<object>(false, "User doesn't exist", null);
+            }
+            if(user.Password != Common.MD5Hash(oldPassword)[..32])
+            {
+                return new Response<object>(false, "Old password is not correct", null);
+            }
+            else
+            {
+                user.Password = Common.MD5Hash(newPassword);
+                var result = await Update(user);
+                if (result)
+                    return new Response<object>(true, "Change password success", null);
+                else
+                    return new Response<object>(false, "Change password fail", null);
+            }
+        }
+
+        [Obsolete]
+        public async Task<bool> ChangeInfor(User t)
+        {
+            var user = await UserCollection.Find(x => x.Id == t.Id).FirstOrDefaultAsync();
+            if (user == null) return false;
+
+            var filter = Builders<User>.Filter.Eq("_id", new ObjectId(t.Id));
+            user.LastName = t.LastName;
+            user.FirstName = t.FirstName;
+            //user.Description = t.Description;
+            user.Address = t.Address;
+            user.Phone = t.Phone;
+            user.DisplayName = t.DisplayName;
+            
+            var result = await UserCollection.ReplaceOneAsync(filter, user, options: new UpdateOptions() { IsUpsert = false });
+            return result.IsAcknowledged;
         }
     }
 }

@@ -210,3 +210,32 @@ body{
     padding: 0!important;
 }
 /* end css for home/index */
+
+/*Css for User/Reset */
+#resetPass .row {
+    margin: 20px 0;
+   
+}
+#resetPass{
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    
+}
+#resetPass .material-textfield {
+    padding-left: unset;
+}
+/*End css for User/Rest */
+
+/*Css for table user infor*/
+
+.tb-infor tr{
+    height: 60px;
+}
+.tb-infor .col-right{
+    padding-left: 6rem;
+}
+.tb-infor .control-label{
+    position: unset!important;
+}
+/*End css for table user infor*/

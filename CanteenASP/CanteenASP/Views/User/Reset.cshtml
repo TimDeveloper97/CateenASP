@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Reset";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts{
+<script>
+    setTimeout(function () {
+        $("#msgAlert").fadeOut('slow');
+    }, 2000);
+</script>
+}
+
+<div class="page_content_wrap p-0">
+    <!-- <div class="progress rounded-0" style="height: 6px;">
+        <div class="progress-bar w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    </div> -->
+
+    <div class="your-information py-md-6 p-4">
+        <div class="my-container">
+            <div class="row pb-4">
+                <form class="mt-4 w-100 outline-form" method="post" asp-action="Reset" asp-controller="User">
+                    <div class="col">
+                        <div class="payment-form theme-color bg-white p-md-5 p-3 rg-form" id="resetPass">
+                            <div class="payment-form mb-5">
+                                <h4>Your information</h4>
+                                <p style="font-size: 1rem;">please enter the following details to change password.</p>
+                            </div>
+
+
+                            @if (ViewData["Message"] != null)
+                            {
+                                <div id="msgAlert" class="alert alert-danger" role="alert">
+                                    @ViewData["Message"]
+                                </div>
+                            }
+                            <div class="row">
+                                <!-- username -->
+
+                                <div class="form-group material-textfield">
+
+                                    <input type="password" name="oldPassword" id="oldPassword" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                    <label for="username">Old Password</label>
+                                </div>
+
+                                <!-- email address -->
+
+                            </div>
+
+                            <div class="row">
+
+                                <!-- password -->
+                                <div class="form-group material-textfield">
+
+                                    <input type="password" name="password" id="password" placeholder=" " class="form-control " autocomplete="off" required autofocus>
+                                    <label for="password">Password</label>
+
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+
+                                <!-- confirm password -->
+                                <div class="form-group material-textfield">
+
+                                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder=" " required autofocus class="form-control" autocomplete="off">
+                                    <label for="password_confirmation">Confirm password</label>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <span id="passwordMessage"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center py-5">
+
+                            <button type="submit" class="btn btn-primary btn-lg">Change password</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

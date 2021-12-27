@@ -134,5 +134,11 @@ namespace API
             var orders = await OrderCollection.Find(x => x.User.Id == userId).ToListAsync();
             return orders;
         }
+        public async Task<bool> MealTimeIsExist(string userId, MealTime mealTime)
+        {
+            var orders = await GetAll();
+            var order = orders.Where(x => x.User.Id == userId && x.Food.MealTime == mealTime && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
+            return order == null ? false : true;
+        }
     }
 }

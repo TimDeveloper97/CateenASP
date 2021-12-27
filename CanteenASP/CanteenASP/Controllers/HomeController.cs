@@ -27,11 +27,12 @@ namespace CanteenASP.Controllers
             var foods = await _foodService.GetAll();
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
             var userId = HttpContext.Session.GetString("UserId");
-            if(userId != null)
+            if (userId != null)
             {
-                ViewBag.Orders = await _orderService.GetOrdersByUser(userId);
+                var orders = await _orderService.GetOrdersByUser(userId);
+                ViewBag.Orders = orders.Where(x => x.OrderTime.Date == DateTime.Now.Date).ToList();
             }
-            foreach(var item in foods)
+            foreach (var item in foods)
             {
                 item.Price = double.Parse(item.Price).ToString("#,###", cul.NumberFormat);
             }
@@ -44,33 +45,36 @@ namespace CanteenASP.Controllers
         {
             var food = await _foodService.GetItem(id);
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
-            food.Price = double.Parse(food.Price).ToString("#,###",cul.NumberFormat);
+            food.Price = double.Parse(food.Price).ToString("#,###", cul.NumberFormat);
             return View(food);
         }
 
         public async Task<IActionResult> Order(string id)
         {
             var userId = HttpContext.Session.GetString("UserId");
-            if(userId == null)
+            if (userId == null)
             {
                 return RedirectToAction("Index", "User");
             }
             var user = await _userService.GetItem(userId);
             var food = await _foodService.GetItem(id);
             var orderTime = DateTime.Now;
-            var order = new Order()
+            var flag = await _orderService.MealTimeIsExist(userId, food.MealTime);
+            if (!flag)
             {
-                User = user,
-                Food = food,
-                OrderTime = orderTime,
-            };
-            var res = await _orderService.Create(order);
-            if (res)
-            {
-                return RedirectToAction("Index");
+                var order = new Order()
+                {
+                    User = user,
+                    Food = food,
+                    OrderTime = orderTime,
+                };
+                var res = await _orderService.Create(order);
+                if (!res)
+                    TempData["Message"] = "Time to order this meal is up!";
             }
-            TempData["Message"] = "Time to order this meal is up!";
-            TempData["Flag"] = 1;
+            else
+                TempData["Message"] = "This meal has already ordered today!";
+
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CancelOrder(string id)

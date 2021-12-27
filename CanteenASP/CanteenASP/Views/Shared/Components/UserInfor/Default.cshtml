@@ -1,14 +1,27 @@
 ﻿@using Model
 @model User
 
-@if(Model == null){
-    <li class="nav-item">
+@if (Model == null)
+{
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Index">Login</a>
-    </li>
+        </li>
+    </ul>
 }
-else{
-    <li class="nav-item" style="margin-left:30px; padding-top:8px">Hello @Model.DisplayName</li>
-    <li class="nav-item" style="margin-left: 20px"><a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Logout">Logout</a></li>
-    <li class="nav-item"><a class="nav-link text-white">Personal infor</a></li>
-    <li class="nav-item"><a class="nav-link text-white">Reset password</a></li>
+else
+{
+    <ul class="navbar-nav flex-grow-1" style="justify-content: flex-end;">
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item" style="margin-left:30px; padding-top:8px; margin-right: 60%;">Hello @Model.DisplayName</li>
+
+        <li class="nav-item my-2 my-sm-0"><a class="nav-link text-white" asp-action="Infor" asp-controller="User">Personal infor</a></li>
+        <li class="nav-item"><a class="nav-link text-white" asp-action="Reset" asp-controller="User">Reset password</a></li>
+        <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Logout">Logout</a></li>
+    </ul>
 }

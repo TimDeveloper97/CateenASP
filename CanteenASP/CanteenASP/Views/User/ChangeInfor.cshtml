@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Infor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Model.User
+
+<div class="page_content_wrap p-0">
+    <!-- <div class="progress rounded-0" style="height: 6px;">
+        <div class="progress-bar w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    </div> -->
+
+    <div class="your-information py-md-6 p-4">
+        <div class="my-container">
+            <div class="row pb-4">
+
+               <form class="mt-4 w-100 outline-form" method="post" asp-action="ChangeInfor" asp-controller="User">
+                    <div class="col">
+                    <div class="payment-form theme-color bg-white p-md-5 p-3 rg-form" style="padding:3rem 6rem!important;" id="resetPass">
+                        <div class="payment-form mb-5" style="padding-left: 4rem;">
+                            <h4>Your information</h4>
+                            <table class="tb-infor">
+                                <tr>
+                                    <td>
+                                        <label asp-for=LastName class="control-label"></label>
+                                    </td>
+                                    <td class="col-right">
+                                       <input asp-for="LastName" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="FirstName" class="control-label"></label>
+                                    </td>
+                                    <td class="col-right">
+                                         <input asp-for="FirstName" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="Phone" class="control-label"></label>
+                                    </td>
+                                    <td class="col-right">
+                                         <input asp-for="Phone" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="Address" class="control-label"></label>
+                                    </td>
+                                    <td class="col-right">
+                                         <input asp-for="Address" class="form-control" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                     <div class="text-center py-5">
+
+                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                     </div>
+                </div>
+
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
+

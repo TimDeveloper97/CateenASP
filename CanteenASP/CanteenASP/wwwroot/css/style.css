@@ -77,7 +77,7 @@
     overflow: hidden;
 }
 
-.carousel-container .track {
+.carousel-container .track, .track1, .track2 {
     display: inline-flex;
     transition: transform 0.5s;
 }
@@ -111,20 +111,20 @@
     cursor: pointer;
 }
 
-.nav .prev {
+.nav .prev, .prev1, .prev2 {
     left: -30px;
     display: none;
 }
 
-    .nav .prev.show {
+    .nav .prev.show, .prev1.show, .prev2.show {
         display: block;
     }
 
-.nav .next {
+.nav .next, .next1, .next2 {
     right: -30px;
 }
 
-    .nav .next.hide {
+    .nav .next.hide, .next1.hide, .next2.hide {
         display: none;
     }
 
@@ -210,3 +210,33 @@ body{
     padding: 0!important;
 }
 /* end css for home/index */
+
+/*Css for User/Reset */
+#resetPass .row {
+    margin: 20px 0;
+   
+}
+#resetPass{
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    
+}
+#resetPass .material-textfield {
+    padding-left: unset;
+}
+/*End css for User/Rest */
+
+/*Css for table user infor*/
+
+.tb-infor tr{
+    height: 60px;
+}
+.tb-infor .col-right{
+    padding-left: 6rem;
+}
+.tb-infor .control-label{
+    position: unset!important;
+}
+/*End css for table user infor*/
+

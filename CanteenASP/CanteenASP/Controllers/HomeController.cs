@@ -29,7 +29,8 @@ namespace CanteenASP.Controllers
             var userId = HttpContext.Session.GetString("UserId");
             if(userId != null)
             {
-                ViewBag.Orders = await _orderService.GetOrdersByUser(userId);
+                var orders = await _orderService.GetOrdersByUser(userId);
+                ViewBag.Orders = orders.Where(x => x.OrderTime == DateTime.Now).ToList();
             }
             foreach(var item in foods)
             {

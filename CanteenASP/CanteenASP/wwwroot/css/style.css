@@ -77,7 +77,7 @@
     overflow: hidden;
 }
 
-.carousel-container .track {
+.carousel-container .track, .track1, .track2 {
     display: inline-flex;
     transition: transform 0.5s;
 }
@@ -111,20 +111,20 @@
     cursor: pointer;
 }
 
-.nav .prev {
+.nav .prev, .prev1, .prev2 {
     left: -30px;
     display: none;
 }
 
-    .nav .prev.show {
+    .nav .prev.show, .prev1.show, .prev2.show {
         display: block;
     }
 
-.nav .next {
+.nav .next, .next1, .next2 {
     right: -30px;
 }
 
-    .nav .next.hide {
+    .nav .next.hide, .next1.hide, .next2.hide {
         display: none;
     }
 
@@ -239,3 +239,4 @@ body{
     position: unset!important;
 }
 /*End css for table user infor*/
+

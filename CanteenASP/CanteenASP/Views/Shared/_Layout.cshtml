@@ -14,17 +14,21 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary bg-gradient border-bottom box-shadow mb-3" style="margin-bottom: 0px!important;">
             <div class="container-fluid">
-                <a class="navbar-brand" style="color: #fff;" asp-area="" asp-controller="Home" asp-action="Index">Canteen</a>
+                <a class="navbar-brand" style="color: #fff; width: 50px;" asp-area="" asp-controller="Home" asp-action="Index">
+
+                    <img src="/logo.png" style="width:100%" alt="logo">
+                    <label>Cateen</label>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <div class="container header-item">
-                        
-                       
+
+
                         @await Component.InvokeAsync("UserInfor")
-                    
+
                     </div>
                 </div>
             </div>

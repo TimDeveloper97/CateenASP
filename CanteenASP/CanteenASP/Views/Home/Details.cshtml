@@ -48,8 +48,8 @@ body{
                     </div>
                     <div class="col-md-4 info">
                         <h3>@Model.Name</h3>
-                        <p>@Model.Price VNĐ</p>
-                        <p style="padding: 0 25px;"><a class="order-button" style="text-decoration=none!important;" asp-action="Order" asp-route-id="@Model.Id">Order</a></p>
+                        <p style="color: red;">@Model.Price VNĐ</p>
+                        <p style="padding: 0 25px;"><a class="order-button" style="text-decoration:none!important;" asp-action="Order" asp-route-id="@Model.Id">Order</a></p>
                         <h5>Descriptions</h5>
                         <p>@Model.Description</p>
                         <h6>Side dishes</h6>

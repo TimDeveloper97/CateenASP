@@ -44,9 +44,9 @@
   },
   "Name": "Bánh mì Pate",
   "Price": "15000",
-  "Description": "Bánh mì được cho thêm Pate",
+  "Description": "Bạn có thể tìm thấy các cửa hàng, xe đẩy bán bánh mì pate trên phần lớn con đường, góc phố ở Việt Nam. Người Việt chọn ăn bánh mì bất kể thời gian nào trong ngày, kèm một ly cà phê, sữa tươi… cũng rất hợp vị. Cách làm bánh mì pate thập cẩm mà chúng ta thường thấy cũng không quá khó, bạn có thể tự tay chế biến tại nhà để làm bữa ăn sáng bổ dưỡng, chất lượng cho những người thân yêu.",
   "Image": "015352_20122021.png",
-  "SideDishes": "Bạn có thể tìm thấy các cửa hàng, xe đẩy bán bánh mì pate trên phần lớn con đường, góc phố ở Việt Nam. Người Việt chọn ăn bánh mì bất kể thời gian nào trong ngày, kèm một ly cà phê, sữa tươi… cũng rất hợp vị. Cách làm bánh mì pate thập cẩm mà chúng ta thường thấy cũng không quá khó, bạn có thể tự tay chế biến tại nhà để làm bữa ăn sáng bổ dưỡng, chất lượng cho những người thân yêu.",
+  "SideDishes": "Bánh mì + sữa",
   "MealTime": 1
 },{
   "_id": {
@@ -147,5 +147,65 @@
   "Description": "Cơm niêu là một nét đặc sắc trong văn hóa ẩm thực của người Việt Nam, những hạt cơm được nấu trong nồi nêu giúp cơm dẻo, thơm khiến bữa ăn gia đình thêm ấm áp.",
   "Image": "134231_24122021.png",
   "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c9dfe2ed0ffa48fa9e13af"
+  },
+  "Name": "Xôi Ngô",
+  "Price": "20000",
+  "Description": "Xôi bắp là món ăn dân dã, mộc mạc gắn liền với ký ức tuổi thơ của nhiều người. Món ăn có xuất xứ từ làng quê nhưng có thể chinh phục được vị giác của mọi thực khách từ nông thôn đến thành thị và vô cùng được đón nhận tại chốn Sài Thành nhộn nhịp.",
+  "Image": "235206_27122021.png",
+  "SideDishes": "Ruốc",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c9f123114ebc469800a499"
+  },
+  "Name": "Cháo sườn sụn",
+  "Price": "35000",
+  "Description": "Cháo nóng kết hợp với sườn sụn sần sật, quẩy giòn rụm và hành phi thơm lừng... tạo nên món ngon đặc trưng khi vào đông ở miền Bắc.  Chỉ với nguyên liệu đơn giản gồm xương, sườn sụn và gạo nhưng để làm nên một bát cháo thanh ngọt tự nhiên, đậm đà hương vị cần đòi hỏi sự tỉ mỉ của người nấu.",
+  "Image": "235329_27122021.png",
+  "SideDishes": "Ruốc, Quẩy, Thịt băm",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c9f189114ebc469800a49a"
+  },
+  "Name": "Bún đậu mắm tôm",
+  "Price": "40000",
+  "Description": "Món bún đậu mắm tôm tuy có nhiều thành phần nguyên liệu nhưng lại vô cùng dễ làm và là món ăn kết nối gia đình vào dịp cuối tuần thật thú vị, chúng ta hãy cùng vào bếp và làm ngay thôi!",
+  "Image": "235256_27122021.png",
+  "SideDishes": "Dồi, Chả cốm, Thịt luộc",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61cac3113768fdb7be845b50"
+  },
+  "Name": "Cơm gà xối mở",
+  "Price": "40000",
+  "Description": "Cơm gà là món ăn phổ biến và dễ làm kết hợp giữa vị ngọt giòn giai của gà và vị dẻo thơm của hạt cơm cùng với các hương vị và cách chế biến khác nhau ",
+  "Image": "235601_27122021.png",
+  "SideDishes": "Thịt gà xé",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61cac3d73768fdb7be845b51"
+  },
+  "Name": "Thịt chó",
+  "Price": "60000",
+  "Description": "Một mâm thịt chó với đầy đủ các món và thêm xả ớt, hứa hẹn đem lại một bữa tối ngon miệng và vui vẻ cho bạn và người thân",
+  "Image": "235919_27122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61cac4613768fdb7be845b52"
+  },
+  "Name": "Vịt quay da giòn",
+  "Price": "40000",
+  "Description": "Món vịt quay cực thơm lừng dành cho quý khách. Thịt vịt được tẩm ướp gia vị đầy đủ và nướng chín mềm béo ngậy.",
+  "Image": "000137_28122021.png",
+  "SideDishes": "Không có",
   "MealTime": 3
 }]

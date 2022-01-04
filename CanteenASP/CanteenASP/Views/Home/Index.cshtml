@@ -9,7 +9,7 @@
 
 
 <div class="container-fluid banner">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -42,30 +42,32 @@
 
 
 
-   @* <div class="modal fade" id="samplePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"> </h4>
-                </div>
-                <div class="modal-body">
-                    @ViewData["Message"]
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+    @if (ViewData["Message"] != null)
+    {
+        @*<div id="msgAlert" class="alert alert-danger" role="alert">
+            @ViewData["Message"]
+            </div>*@
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Notification</h5>
+
+                    </div>
+                    <div class="modal-body">
+                        @ViewData["Message"]
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="closeModal" onclick="closeModal()" data-dismiss="modal">Close</button>
+
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>*@
-
-     @if (ViewData["Message"] != null)
-                    {
-                        <div id="msgAlert" class="alert alert-danger" role="alert">
-                            @ViewData["Message"]
-                        </div>
-                    }
+    }
 
     @await Component.InvokeAsync("Meals", listOrder)
 
@@ -231,7 +233,7 @@
     })
     //track
     let index = 0;
-    
+
     next.addEventListener('click', () => {
       index++;
       prev.classList.add('show');
@@ -253,7 +255,7 @@
     //
     //track1
     let index1 = 0;
-    
+
     next1.addEventListener('click', () => {
       index1++;
       prev1.classList.add('show');
@@ -275,7 +277,7 @@
     //
     //track2
     let index2 = 0;
-    
+
     next2.addEventListener('click', () => {
       index2++;
       prev2.classList.add('show');
@@ -298,6 +300,16 @@
     setTimeout(function () {
             $("#msgAlert").fadeOut('slow');
         }, 2000);
+     //
 
+     var modal = document.getElementById('myModal');
+     modal.style.display = "unset";
+     modal.style.opacity = "unset";
+
+     function closeModal(){
+         modal.style.zIndex = "unset";
+         modal.style.display = "none";
+         modal.style.opacity = "0";
+     }
 </script>
 }

@@ -1,5 +1,6 @@
 ﻿using API;
 using API.Interface;
+using CanteenASP.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using MongoDB.Bson;
@@ -7,13 +8,15 @@ using MongoDB.Bson;
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FoodController : Controller
+    public class FoodController : BaseController
     {
-        FoodService _foodService;
+        readonly FoodService _foodService;
+        string _pWwwRoot;
 
-        public FoodController()
+        public FoodController(IHostEnvironment webHostEnviroment)
         {
             this._foodService = new FoodService();
+            _pWwwRoot = Path.Combine(webHostEnviroment.ContentRootPath, "wwwroot");
         }
 
         public async Task<IActionResult> Index()
@@ -29,8 +32,30 @@ namespace CanteenASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Food food)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create(Food food, List<IFormFile> postedFiles)
         {
+            if(string.IsNullOrEmpty(food.Name) 
+                || string.IsNullOrEmpty(food.Price)
+                || string.IsNullOrEmpty(food.SideDishes))
+                return View(food);
+
+            string path = Path.Combine(_pWwwRoot, "assets");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            if (postedFiles.Count != 0)
+            {
+                var filename = DateTime.Now.ToString("HHmmss_ddMMyyyy") + ".png";
+                food.Image = filename;
+                using (FileStream stream = new FileStream(Path.Combine(path, filename), FileMode.Create))
+                {
+                    postedFiles[0].CopyTo(stream);
+                }
+            }
+
             var result = await _foodService.Create(food);
             if(result)
             {
@@ -42,13 +67,41 @@ namespace CanteenASP.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
-            var food = await _foodService.Read(id);
+            var food = await _foodService.GetItem(id);
             return View(food);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Food food)
+        [Obsolete]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Edit(Food food, List<IFormFile> postedFiles)
         {
+            if (string.IsNullOrEmpty(food.Name)
+                || string.IsNullOrEmpty(food.Price)
+                || string.IsNullOrEmpty(food.SideDishes))
+                return View(food);
+
+            string path = Path.Combine(_pWwwRoot, "assets");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            if (postedFiles.Count != 0)
+            {
+                if(!string.IsNullOrEmpty(food.Image))
+                {
+                    System.IO.File.Delete(Path.Combine(path, food.Image));
+                }
+
+                var filename = DateTime.Now.ToString("HHmmss_ddMMyyyy") + ".png";
+                food.Image = filename;
+                using (FileStream stream = new FileStream(Path.Combine(path, filename), FileMode.Create))
+                {
+                    postedFiles[0].CopyTo(stream);
+                }
+            }
+
             var result = await _foodService.Update(food);
             if (result)
             {

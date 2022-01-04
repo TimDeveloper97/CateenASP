@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "61c157a5a24deaebe09e3d7d"
+  },
+  "User": {
+    "_id": {
+      "$oid": "61bb036adf1226bc607488c6"
+    },
+    "DisplayName": "Le Duy",
+    "UserName": "duy123",
+    "Password": "3D337B12B056A65BF26A4F8FCA76DF6B",
+    "FirstName": "Duy",
+    "LastName": "Le",
+    "Phone": "0987654321",
+    "Address": "ánhas",
+    "Description": "normal user"
+  },
+  "Food": {
+    "_id": {
+      "$oid": "61c052b0f57d3a1f2a118659"
+    },
+    "Name": "Bánh mì Pate",
+    "Price": "15000",
+    "Description": "Bánh mì được cho thêm Pate",
+    "Image": "015352_20122021.png",
+    "SideDishes": "Không có",
+    "MealTime": 1
+  },
+  "OrderTime": {
+    "$date": "2021-12-21T04:27:00.179Z"
+  }
+}]

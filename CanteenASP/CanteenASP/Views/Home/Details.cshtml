@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Details food";
+}
+
+@model Model.Food
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: whitesmoke !important;
+}
+.img img{
+    width: 100%;
+    /* height: 100%; */
+}
+.img{
+    /*width: 300px;*/
+}
+.info button{
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+}
+.info{
+    padding-left: 60px;
+}
+.info p{
+    margin: 30px 0;
+}
+.card-view{
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+</style>
+
+
+<div class="container" style="margin-top: 100px;">
+    <div class="card-view">
+        <div class="row" style="padding: 0 10%;">
+            <div>
+                <div class="row">
+                    <div class="col-md-8 img">
+                        <img src="/assets/@Model.Image">
+                    </div>
+                    <div class="col-md-4 info">
+                        <h3>@Model.Name</h3>
+                        <p style="color: red;">@Model.Price VNĐ</p>
+                        <p style="padding: 0 25px;"><a class="order-button" style="text-decoration:none!important;" asp-action="Order" asp-route-id="@Model.Id">Order</a></p>
+                        <h5>Descriptions</h5>
+                        <p>@Model.Description</p>
+                        <h6>Side dishes</h6>
+                        <p>@Model.SideDishes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

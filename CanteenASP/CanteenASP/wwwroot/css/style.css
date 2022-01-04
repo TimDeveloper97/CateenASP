@@ -1,0 +1,242 @@
+﻿.material-textfield {
+    position: relative;
+}
+
+.outline-form label {
+    position: absolute;
+    font-size: 1rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: gray;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: .1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+    font-weight: normal!important;
+}
+
+.outline-form input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1rem 0.7rem;
+    color: gray;
+    transition: 0.1s ease-out;
+}
+
+    .outline-form input:focus {
+        border-color: #6200EE;
+    }
+
+        .outline-form input:focus + label {
+            color: #6200EE;
+            top: 0;
+            transform: translateY(-50%) scale(.9);
+        }
+
+    .outline-form input:not(:placeholder-shown) + label {
+        top: 0;
+        transform: translateY(-50%) scale(.9);
+    }
+
+.rg-form{
+    width: 120%;
+    margin-left: -10%;
+    margin-top: 5rem;
+    padding: 6rem!important;
+}
+
+/* css for home/index */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.carousel-container {
+    width: 1380px;
+    margin: 20px auto;
+    min-height: 200px;
+    position: relative;
+    margin-left: -40px;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .carousel-container {
+        width: 85%;
+    }
+}
+
+.carousel-container .carousel-inner {
+    overflow: hidden;
+}
+
+.carousel-container .track, .track1, .track2 {
+    display: inline-flex;
+    transition: transform 0.5s;
+}
+
+.carousel-container .card-container {
+    width: 279px;
+    flex-shrink: 0;
+    /* height: 350px; */
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+    .carousel-container .card-container .card {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        /* border-radius: 10px; */
+        display: flex;
+        flex-direction: column;
+    }
+
+.nav button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.nav .prev, .prev1, .prev2 {
+    left: -30px;
+    display: none;
+}
+
+    .nav .prev.show, .prev1.show, .prev2.show {
+        display: block;
+    }
+
+.nav .next, .next1, .next2 {
+    right: -30px;
+}
+
+    .nav .next.hide, .next1.hide, .next2.hide {
+        display: none;
+    }
+
+/* .card > * {
+  flex: 1;
+} */
+.card .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 250px !important;
+    overflow: hidden;
+    /* margin-bottom: 60px; */
+}
+
+    .card .img > img {
+        /* width: 100%;  */
+        height: 100%;
+        object-fit: contain;
+    }
+
+.card .info {
+    flex-basis: 40px;
+    /* background: #333;
+  color: #fff; */
+    flex-grow: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card h4 {
+    margin: 0 auto;
+}
+
+.card p {
+    padding: 0 40px;
+    text-align: center;
+}
+.card a{
+    text-decoration: none;
+    color: unset;
+}
+
+.order-button {
+    padding: 5px 45px;
+    border-radius: 20px;
+    color: white!important;
+    background-color: #4d7cc9;
+    border: 1px solid gray;
+}
+
+.order-item {
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+.carousel-item img{
+    height: 500px;
+   
+}
+.w-70{
+    width: 70%!important;
+}
+.p-30{
+    padding-left: 30%;
+}
+
+.order{
+    height: 230px;
+    margin-bottom: 70px;
+}
+.banner{
+    padding: 0;
+    margin-bottom: 50px;
+}
+.header-item{
+    color: #fff!important;
+    padding: 0!important;
+}
+/* end css for home/index */
+
+/*Css for User/Reset */
+#resetPass .row {
+    margin: 20px 0;
+   
+}
+#resetPass{
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    
+}
+#resetPass .material-textfield {
+    padding-left: unset;
+}
+/*End css for User/Rest */
+
+/*Css for table user infor*/
+
+.tb-infor tr{
+    height: 60px;
+}
+.tb-infor .col-right{
+    padding-left: 6rem;
+}
+.tb-infor .control-label{
+    position: unset!important;
+}
+/*End css for table user infor*/
+

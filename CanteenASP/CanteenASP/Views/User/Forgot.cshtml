@@ -1,0 +1,449 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="csrf-token" content="6u300dfjwztkx1aax4awuury0haqzydugnnkitro">
+    <title>Cateen: Register</title>
+
+    <!-- <link rel="icon" type="image/png" href="images/fav-icon.png"> -->
+    <!-- fav icon -->
+    <link rel="icon" type="text/css" href="~/login.ico">
+
+    <!-- fonts awesome -->
+    <link rel="stylesheet" type="text/css" href="~/css/all.min.css">
+
+    <!-- slick slider -->
+    <link rel="stylesheet" href="~/css/slick.css">
+
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" type="text/css" href="~/css/sweetalert2.min.css">
+
+    <!-- croppie -->
+    <link rel="stylesheet" type="text/css" href="~/css/croppie.css">
+
+    <!-- select2 -->
+    <link rel="stylesheet" type="text/css" href="~/css/select2.min.css">
+
+    <!-- main style -->
+    <link rel="stylesheet" type="text/css" href="~/css/onboading_style.css">
+
+    <!-- main jquery -->
+    <script src="~/js/jquery.min.js"></script>
+
+    <!-- sortable -->
+    <script src="~/js/jquery-ui.js"></script>
+
+    <!--bootstrap js-->
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <!-- scripts -->
+    <script>
+        var site_url    = "https://lotteryscreen.app";
+        var _token      = "6u300dfjwztkx1aax4awuury0haqzydugnnkitro";
+    </script>
+</head>
+<body class="skin_white">
+
+
+    <div class="header onboading_header bg-white shadow-light-sm position-fixed w-100">
+        <div class="header_nav_wrap">
+            <div class="row">
+                <div class="col">
+                    <div class="header_nav_logo py-1">
+                        <div class="d-block pb-2" style="padding-left:50%;">
+					        <a href="">
+					            <img src="/logo.png" width="70" height="70" alt="logo">
+                                 <label class="font-weight-bold ">Canteen</label>
+					        </a>
+				        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="progress rounded-0" style="height: 6px;">
+            <div class="progress-bar w-60" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>*@
+    </div>
+
+    <div class="page_content_wrap p-0">
+        <!-- <div class="progress rounded-0" style="height: 6px;">
+            <div class="progress-bar w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> -->
+
+        <div class="your-information py-md-6 p-4">
+            <div class="my-container">
+                <div class="row pb-4">
+                    <form class="mt-4 w-100 outline-form" method="post" asp-action="Forgot" asp-controller="User">
+                        <div class="col">
+                            <div class="payment-form theme-color bg-white p-md-5 p-3 rg-form">
+                                <div class="payment-form mb-5">
+                                    <h4>Your information</h4>
+                                    <p style="font-size: 1rem;">please enter the following details to change password.</p>
+                                </div>
+
+                              
+                                <div class="row">
+                                    <!-- username -->
+                                    <div class="col-md-6">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="Username" id="username" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="username">Username</label>
+                                        </div>
+                                    </div>
+                                    <!-- email address -->
+                                    <div class="col-md-6">
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="text" name="phone" id="phone" required autofocus placeholder=" " class="form-control " autocomplete="off">
+                                            <label for="phone">Phone</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- password -->
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="password" name="password" id="password" placeholder=" " class="form-control " autocomplete="off" required autofocus>
+                                            <label for="password">Password</label>
+                                            <!-- <div class="show_input_field">
+                                                <div class="checkbox_btn btn-group-toggle" data-toggle="buttons">
+                                                <label class="btn btn-outline-secondary">
+                                                        <input id="show_pass" type="checkbox"> <i class="fas fa-eye"></i>
+                                                </label>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- confirm password -->
+                                        <div class="form-group material-textfield">
+                                            
+                                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder=" " required autofocus class="form-control" autocomplete="off">
+                                            <label for="password_confirmation">Confirm password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                    <span id="passwordMessage"></span>
+                                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center py-5">
+                                <!-- <a href="https://lotteryscreen.app/onboarding/payment-form" class="btn btn-outline-secondary btn-lg mr-4">
+                                    <i class="fas fa-long-arrow-alt-left pr-1"></i> back
+                                </a> -->
+                                <!-- <a href="https://lotteryscreen.app/onboarding/store-setup" class="btn btn-primary btn-lg">
+                                    continue <i class="fas fa-long-arrow-alt-right pl-1"></i>
+                                </a> -->
+                                <button type="submit" class="btn btn-primary btn-lg">Change password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- slick slider -->
+    <script src="js/slick.min.js"></script>
+
+    <!--sweetalert2 -->
+    <script src="js/sweetalert2.js"></script>
+
+    <!-- full screen -->
+    <script src="js/jquery.fullscreen.min.js"></script>
+
+    <!-- croppie -->
+    <script src="js/croppie.js"></script>
+
+    <!-- select2 -->
+    <script src="js/select2.min.js"></script>
+
+    <script>
+
+        function iformat(icon)
+        {
+           var originaloption = icon.element;
+           return $('<span><i class="fa ' + $(originaloption).data('icon') + '"></i> ' + icon.text + '</span>');
+        }
+
+        var tooltip = {
+           init: function () {
+              $('[data-toggle="tooltip"]').tooltip();
+           },
+        };
+
+        jquery('#pricing_table_content_list').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            slidestoshow: 4,
+            slidestoscroll: 1,
+            autoplay: true,
+            autoplayspeed: 5000,
+            responsive: [
+            {
+                breakpoint: 1301,
+                settings: {
+                slidestoshow: 2,
+                slidestoscroll: 1,
+                }
+            },
+                {
+                breakpoint: 1025,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1,
+                }
+            },
+            {
+                breakpoint: 769,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1
+                }
+            },
+            {
+                breakpoint: 490,
+                settings: {
+                slidestoshow: 1,
+                slidestoscroll: 1
+                }
+            }
+            ]
+        });
+
+        $(".silder-section").slick({
+           dots: true,
+           infinite: false,
+           speed: 300,
+           slidestoshow: 4,
+           slidestoscroll: 1,
+           adaptiveheight: true,
+           arrows: false,
+           adaptiveheight:false,
+            //    responsive: [
+            //     {
+            //       breakpoint: 1000,
+            //       settings: {
+            //         slidestoshow: 2,
+            //         infinite: true,
+            //       }
+            //     },
+            //     {
+            //       breakpoint: 690,
+            //       settings: {
+            //         slidestoshow: 1,
+            //       }
+            //     }
+            //   ]
+        });
+
+        $(".displayworking-slider").slick({
+           dots: true,
+           infinite: true,
+           speed: 300,
+           slidestoshow: 1,
+           slidestoscroll: 1,
+           adaptiveheight: true,
+           arrows: false,
+           adaptiveheight:false,
+            //    responsive: [
+            //     {
+            //       breakpoint: 1000,
+            //       settings: {
+            //         slidestoshow: 2,
+            //         infinite: true,
+            //       }
+            //     },
+            //     {
+            //       breakpoint: 690,
+            //       settings: {
+            //         slidestoshow: 1,
+            //       }
+            //     }
+            //   ]
+        });
+
+        // in your javascript (external .js resource or <script> tag)
+        /* $(document).ready(function() {
+            $('.select2').select2({
+              width: "100%",
+              templateselection: iformat,
+              templateresult: iformat,
+              allowhtml: true
+            });
+        }); */
+
+        // alert modal type
+        $(document).on('click', '#success', function(e) {
+          swal.fire({
+            title : "success!",
+            text : "successfully saved.",
+            type : "success",
+            showconfirmbutton: true,
+            showclosebutton: true,
+          })
+        });
+
+        $(document).on('click', '#error', function(e) {
+          swal.fire({
+            title : "are you sure to delete winner?",
+            text : "winner will be deleted.",
+            type : "error",
+            showcancelbutton: true,
+            showconfirmbutton: true,
+            showclosebutton: true,
+            dangermode : true,
+          })
+        });
+
+        $(document).on('click', '#warning', function(e) {
+           swal.fire({
+              title : "are you sure to deactivate?",
+              text : "select entries to de-activate",
+              type : "warning",
+              showcancelbutton: true,
+              showconfirmbutton: true,
+              showclosebutton: true,
+              dangermode : true,
+           })
+        });
+
+        $(document).on('click', '#info', function(e) {
+           swal.fire({
+              title : "are you sure to deactivate?",
+              text : "select entries to de-activate",
+              type : "info",
+              showcancelbutton: true,
+              showconfirmbutton: true,
+              showclosebutton: true,
+              dangermode : true,
+           })
+        });
+
+        $(document).on('click', '#yes_internet', function(e) {
+           swal.fire({
+              position: 'top-end',
+              type: 'success',
+              title: 'you are online',
+              showconfirmbutton: true,
+              customclass: {
+                 popup: 'internet_connection',
+              },
+           })
+        });
+
+        $(document).on('click', '#no_internet', function(e) {
+           swal.fire({
+              position: 'top-end',
+              type: 'error',
+              title: 'you are offline',
+              showconfirmbutton: true,
+              customclass: {
+                 popup: 'internet_connection',
+              },
+           })
+        });
+
+        // for file croping
+        //var $uploadcrop;
+        $('#croppie_cover_image_cover').croppie({
+           enableorientation: true,
+           enforceboundary: false,
+           viewport: {
+              width: 280,
+              height: 280,
+           },
+           boundary: {
+              width: 320,
+              height: 320
+           }
+        });
+
+        var $uploadcrop;
+        function readfile(input) {
+           if (input.files && input.files[0]) {
+              var reader = new filereader();
+              reader.onload = function (e) {
+                 $('.croppie_cover').addclass('croppie_cover_ready');
+                 $uploadcrop.croppie('bind', {
+                    url: e.target.result
+                 }).then(function(){
+                    console.log('jquery bind complete');
+                 });
+              }
+              reader.readasdataurl(input.files[0]);
+           }
+        }
+
+        $uploadcrop = $('#croppie_cover_image_file').croppie({
+           enableorientation: true,
+           enforceboundary: false,
+           viewport: {
+              width: 280,
+              height: 280,
+           },
+           boundary: {
+              width: 320,
+              height: 320
+           }
+        });
+
+        $(function(){
+
+           tooltip.init();
+
+           $('.select2').select2({
+              width: "100%",
+              templateselection: iformat,
+              templateresult: iformat,
+              allowhtml: true
+           });
+
+           $('#croppie_cover_image_file').on('change', function () { readfile(this); });
+
+           $('.croppie_cover_image_upload_close').click(function() {
+              $('.croppie_cover').removeclass('croppie_cover_ready');
+           });
+
+           $('.vanilla-rotate').on('click', function(ev) {
+              $uploadcrop.croppie('rotate', parseint($(this).data('deg')));
+           });
+        });
+    </script>
+
+
+
+    <!-- start footer script  -->
+    <!--  end footer script -->
+    <!-- ====================== -->
+    <!--  specific page script  -->
+    <!-- ====================== -->
+    <script src="~/js/script.js">
+       
+    </script>
+    <!-- ====================== -->
+    <!--  specific page script  -->
+    <!-- ====================== -->
+
+
+</body>
+</html>

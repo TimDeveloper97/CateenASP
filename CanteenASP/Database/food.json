@@ -1,0 +1,211 @@
+[{
+  "_id": {
+    "$oid": "61b9a980ec3d75ced3cbcb22"
+  },
+  "Name": "Cơm rang dưa bò",
+  "Price": "30000",
+  "Description": "Cơm rang thơm ngon được sào cùng với dưa và thịt bò xào hạng 3 là một món ăn đậm chất hương vị việt nam",
+  "Image": "132555_24122021.png",
+  "SideDishes": "Canh phở + chuối",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61bd9e25fbc09cbd1c95d1da"
+  },
+  "Name": "Cơm rang Dương Châu",
+  "Price": "40000",
+  "Description": "Cơm chiên Dương Châu với những hạt cơm thơm béo, vàng ruộm hòa quyện các loại rau củ tươi ngọt cực ngon mà lại khá dễ thực hiện, bạn có thể tự làm ngay tại nhà với công thức đơn giản",
+  "Image": "132711_24122021.png",
+  "SideDishes": "Canh phở + dưa hấu",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61bd9e3ffbc09cbd1c95d1db"
+  },
+  "Name": "Nem rán",
+  "Price": "20000",
+  "Description": "Theo nhiều tài liệu, nguồn gốc món nem rán là nền ẩm thực Trung Hoa, thuộc nhóm các món dim sum nổi tiếng. Khi du nhập vào nước ta, món nem rán đã được biến tấu thành phần nguyên liệu và gia vị cho phù hợp với khẩu vị của người Việt. Cho đến nay, nem rán trở thành món ăn quen thuộc, không thể thiếu trên cỗ ngày Tết của nhiều gia đình. Cách làm đơn giản dưới đây sẽ giúp bạn kết hợp thịt băm, miến, su hào, cà rốt, hành tây, trứng gà, mộc nhĩ, nấm hương cùng các loại gia vị tạo nên miếng nem rán đẹp mắt, ngon miệng làm xiêu lòng người ăn.",
+  "Image": "132803_24122021.png",
+  "SideDishes": "Canh phở + chuối",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61bd9e4cfbc09cbd1c95d1dc"
+  },
+  "Name": "Nem chua rán",
+  "Price": "25000",
+  "Description": "Nem chua (phương ngữ Bắc Bộ) hay nem (phương ngữ Trung Bộ và phương ngữ Nam Bộ) là một món ăn sử dụng thịt lợn, lợi dụng men của lá chuối (hoặc lá ổi, lá sung v.v.) và thính gạo để ủ chín, có vị chua ngậy. Nổi tiếng ở Việt Nam như một sản vật phổ biến tại nhiều địa phương, tuy không rõ nem chua được người dân vùng nào làm ra đầu tiên. ",
+  "Image": "132855_24122021.png",
+  "SideDishes": "Bánh mì + sữa",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c052b0f57d3a1f2a118659"
+  },
+  "Name": "Bánh mì Pate",
+  "Price": "15000",
+  "Description": "Bạn có thể tìm thấy các cửa hàng, xe đẩy bán bánh mì pate trên phần lớn con đường, góc phố ở Việt Nam. Người Việt chọn ăn bánh mì bất kể thời gian nào trong ngày, kèm một ly cà phê, sữa tươi… cũng rất hợp vị. Cách làm bánh mì pate thập cẩm mà chúng ta thường thấy cũng không quá khó, bạn có thể tự tay chế biến tại nhà để làm bữa ăn sáng bổ dưỡng, chất lượng cho những người thân yêu.",
+  "Image": "015352_20122021.png",
+  "SideDishes": "Bánh mì + sữa",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05404f57d3a1f2a11865a"
+  },
+  "Name": "Bánh mì xúc xích",
+  "Price": "20000",
+  "Description": "Bánh mì được cho thêm xúc xích",
+  "Image": "015932_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c05435f57d3a1f2a11865b"
+  },
+  "Name": "Bánh cuốn nóng",
+  "Price": "25000",
+  "Description": "Gạo thường dùng loại gạo cũ (do sử dụng gạo mới, gạo ngon sẽ có nhiều nhựa nên bánh sẽ dính, khó chế biến), xay mịn, hòa với nước. Đặt nồi hấp, căng vải mỏng trên miệng nồi. Mỗi lần cho một muôi bột nhỏ, xoa đều lên bề mặt miếng vải để lá bánh cuốn được mỏng, có thể thoa thêm chút mỡ để dễ lấy ra. Sau khi bánh chín, dùng đũa to hoặc thanh tre gạt ra đĩa, lúc này có thể cuộn thêm nhân gồm một ít thịt vai nửa nạc nửa mỡ, tôm, băm cùng mộc nhĩ, nấm hương đã xào chín với các gia vị như mắm, hạt tiêu... Rắc thêm hành khô phi thơm và dùng với nước chấm đủ các vị chua, cay, mặn, ngọt. ",
+  "Image": "020021_20122021.png",
+  "SideDishes": "Nước ngọt Cocacola",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61c05453f57d3a1f2a11865c"
+  },
+  "Name": "Mì xào bò",
+  "Price": "40000",
+  "Description": "Các nền ẩm thực khác nhau ở châu Á làm cho gạo, lúa mì, đậu xanh, khoai tây hoặc tinh bột dong riềng, kiều mạch, acorn và mì ngô được luộc và chiên để ăn kèm với rau, thịt hoặc nước thịt. Công thức nấu ăn có thể yêu cầu mì giòn chiên giòn được phục vụ trên nước súp hoặc họ có thể yêu cầu mì luộc sau đó chiên với các gia vị khác. Mì xào bán sẵn cũng có sẵn phải được đun sôi với sữa hoặc nước dùng. Thịt, gà hoặc rau có thể được thêm vào mì chiên ngập dầu trong súp hoặc nước thịt để làm mì xào. ",
+  "Image": "020051_20122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61c05477f57d3a1f2a11865d"
+  },
+  "Name": "Trứng vịt lộn",
+  "Price": "25000",
+  "Description": "Trứng vịt lộn tại Việt Nam thường là phôi thai vịt già từ 9 đến 11 ngày tuổi, luôn được ăn cùng rau răm và muối tiêu khô hoặc muối tiêu chanh (tắc), một số địa phương khác còn ăn kèm với đồ chua ngọt. Ngoài ra,còn có các món biến thể khác như trứng vịt lộn nhúng lẩu, trứng vịt lộn chiên, trứng gà lộn và trứng cút lộn. ",
+  "Image": "020127_20122021.png",
+  "SideDishes": "Bánh mì + sữa",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61c56a381654e3ba80e93c75"
+  },
+  "Name": "Thịt bò sốt vang + bánh mì",
+  "Price": "30000",
+  "Description": "Bò sốt vang là món ăn có nguồn gốc từ các nước phương Tây nhưng lại rất được lòng người Việt. Không chỉ có mùi thơm dễ ăn mà còn mang lại nhiều lợi ích đối với sức khỏe. Với thành phần chính từ thịt bò – nguồn thực phẩm có chứa hàm lượng lớn protein (tới 30%) giúp tăng trưởng và duy trì sự hoạt động dẻo dai cho cơ thể.",
+  "Image": "133536_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61c56a801654e3ba80e93c76"
+  },
+  "Name": "Cháo gà",
+  "Price": "30000",
+  "Description": "Cháo gà hay súp gà là một món súp được làm từ thịt gà, ninh nhừ trong nước, thường kèm với nhiều thành phần nguyên liệu và gia khác. Súp gà hoặc cháo gà cổ điển bao gồm nước dùng gà trong veo, thường có miếng thịt gà hoặc rau, những thứ bổ sung phổ biến là mì ống, mì, bánh bao, hoặc các loại ngũ cốc như gạo và lúa mạch, ở Việt Nam thì có hành, ngò, muối, tiêu. Súp gà hay cháo gà được biết đến một phương thuốc dân gian cho cảm lạnh và cúm, và ở nhiều nước được coi là một thực phẩm dễ ăn, dễ tiêu. ",
+  "Image": "133648_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c56ab01654e3ba80e93c77"
+  },
+  "Name": "Phở bò",
+  "Price": "30000",
+  "Description": "Phở là một món ăn truyền thống của Việt Nam, có nguồn gốc từ Hà Nội và Nam Định, và được xem là một trong những món ăn tiêu biểu cho nền ẩm thực Việt Nam.  Thành phần chính của phở là bánh phở và nước dùng (hay nước lèo theo cách gọi miền Nam) cùng với thịt bò hoặc thịt gà cắt lát mỏng. Ngoài ra còn kèm theo các gia vị như: tương, tiêu, chanh, nước mắm, ớt... Những gia vị này được thêm vào tùy theo khẩu vị của người dùng. Phở thông thường được dùng để làm món điểm tâm buổi sáng hoặc lót dạ buổi đêm; nhưng ở các thành phố lớn, món ăn này có thể được thưởng thức cả ngày. Tại các tỉnh phía Nam Việt Nam và một số vùng miền khác, phở được bày kèm với đĩa rau thơm như hành, giá và những lá cây rau mùi, rau húng, trong đó ngò gai là loại lá đặc trưng của phở; tuy nhiên tại Hà Nội thông thường sẽ không có đĩa rau sống này. Phở thường là phở bò hay phở gà, nhưng đôi khi cũng có những biến thể khác như phở sốt vang, phở khô, phở xào, phở chua, phở vịt ở Cao Bằng, phở thịt quay ở các tỉnh miền núi phía Bắc, .",
+  "Image": "133736_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c56b141654e3ba80e93c78"
+  },
+  "Name": "Mì tương đen",
+  "Price": "30000",
+  "Description": "Món mì tương đen Hàn Quốc gồm 2 thành phần chính là mì và sốt, được chế biến hoàn toàn thủ công bằng bột lúa mì trắng. Phần sốt được làm từ caramel và đậu nành rang. Chính phần sốt đặc biệt này đã làm nên “linh hồn” của món mì tương đen.  Kết hợp hài hòa với nguyên liệu cơ bản, Jajangmyeon còn có thêm thịt và nhiều loại rau củ để bớt nhàm chán cũng như đảm bảo yếu tố dinh dưỡng trong món ăn.",
+  "Image": "133916_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c56b811654e3ba80e93c79"
+  },
+  "Name": "Mì tôm hàn quốc + Kim chi",
+  "Price": "30000",
+  "Description": "Ăn mì gói với kim chi mang lại cho ta cảm giác ngon miệng và cực kì dễ chịu đối với sức khỏe. Kim chi chứa ít calo, giàu chất xơ. Vì thế khi ăn chung với mì, nó giúp cho quá trình tiêu hóa trong cơ thể diễn ra dễ dàng và ổn định hơn. Với nguyên liệu củ cải, bắp cải và dưa chuột muối, kim chi là món ăn chứa nhiều vitamin nên nó cũng góp phần chữa rất nhiều bệnh thông thường cho cơ thể. Hơn nữa, món kim chi còn có thể giúp cơ thể chiến đấu chống lại bệnh ung thư, đặc biệt là ung thư dạ dày.",
+  "Image": "134105_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c56bd71654e3ba80e93c7a"
+  },
+  "Name": "Cơm niêu",
+  "Price": "30000",
+  "Description": "Cơm niêu là một nét đặc sắc trong văn hóa ẩm thực của người Việt Nam, những hạt cơm được nấu trong nồi nêu giúp cơm dẻo, thơm khiến bữa ăn gia đình thêm ấm áp.",
+  "Image": "134231_24122021.png",
+  "SideDishes": "Sữa chua + chuối",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c9dfe2ed0ffa48fa9e13af"
+  },
+  "Name": "Xôi Ngô",
+  "Price": "20000",
+  "Description": "Xôi bắp là món ăn dân dã, mộc mạc gắn liền với ký ức tuổi thơ của nhiều người. Món ăn có xuất xứ từ làng quê nhưng có thể chinh phục được vị giác của mọi thực khách từ nông thôn đến thành thị và vô cùng được đón nhận tại chốn Sài Thành nhộn nhịp.",
+  "Image": "235206_27122021.png",
+  "SideDishes": "Ruốc",
+  "MealTime": 1
+},{
+  "_id": {
+    "$oid": "61c9f123114ebc469800a499"
+  },
+  "Name": "Cháo sườn sụn",
+  "Price": "35000",
+  "Description": "Cháo nóng kết hợp với sườn sụn sần sật, quẩy giòn rụm và hành phi thơm lừng... tạo nên món ngon đặc trưng khi vào đông ở miền Bắc.  Chỉ với nguyên liệu đơn giản gồm xương, sườn sụn và gạo nhưng để làm nên một bát cháo thanh ngọt tự nhiên, đậm đà hương vị cần đòi hỏi sự tỉ mỉ của người nấu.",
+  "Image": "235329_27122021.png",
+  "SideDishes": "Ruốc, Quẩy, Thịt băm",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61c9f189114ebc469800a49a"
+  },
+  "Name": "Bún đậu mắm tôm",
+  "Price": "40000",
+  "Description": "Món bún đậu mắm tôm tuy có nhiều thành phần nguyên liệu nhưng lại vô cùng dễ làm và là món ăn kết nối gia đình vào dịp cuối tuần thật thú vị, chúng ta hãy cùng vào bếp và làm ngay thôi!",
+  "Image": "235256_27122021.png",
+  "SideDishes": "Dồi, Chả cốm, Thịt luộc",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61cac3113768fdb7be845b50"
+  },
+  "Name": "Cơm gà xối mở",
+  "Price": "40000",
+  "Description": "Cơm gà là món ăn phổ biến và dễ làm kết hợp giữa vị ngọt giòn giai của gà và vị dẻo thơm của hạt cơm cùng với các hương vị và cách chế biến khác nhau ",
+  "Image": "235601_27122021.png",
+  "SideDishes": "Thịt gà xé",
+  "MealTime": 2
+},{
+  "_id": {
+    "$oid": "61cac3d73768fdb7be845b51"
+  },
+  "Name": "Thịt chó",
+  "Price": "60000",
+  "Description": "Một mâm thịt chó với đầy đủ các món và thêm xả ớt, hứa hẹn đem lại một bữa tối ngon miệng và vui vẻ cho bạn và người thân",
+  "Image": "235919_27122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 3
+},{
+  "_id": {
+    "$oid": "61cac4613768fdb7be845b52"
+  },
+  "Name": "Vịt quay da giòn",
+  "Price": "40000",
+  "Description": "Món vịt quay cực thơm lừng dành cho quý khách. Thịt vịt được tẩm ướp gia vị đầy đủ và nướng chín mềm béo ngậy.",
+  "Image": "000137_28122021.png",
+  "SideDishes": "Không có",
+  "MealTime": 3
+}]

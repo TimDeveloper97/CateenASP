@@ -22,5 +22,6 @@ namespace Model
         public string? Address { get; set; }
         public string? Description { get; set; }
 
+        
     }
 }

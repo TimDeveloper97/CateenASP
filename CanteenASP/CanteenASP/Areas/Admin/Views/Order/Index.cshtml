@@ -6,6 +6,7 @@
     var mt = ViewData["MealTime"];
 }
 
+
 @section Scripts{
 <script>
             window.onload = function(){
@@ -19,12 +20,11 @@
                         option.selected = true;
                         return;
                     }
-                }
+top        }
             }
     
 </script>
 }
-
 
 <div>
     <h1>View</h1>
@@ -34,27 +34,49 @@
     <div class="row">
         <div class="col-md-3">
             <div class="row">
-
                 <label class="col-md-4 form-group control-label">Start date</label>
-                <div class="col-md-8">
-                    <input type="date" name="StartTime" value="@ViewBag.StartTime" class="form-control" />
-
-                </div>
-
             </div>
         </div>
         <div class="col-md-3">
             <div class="row">
-
-                <label class="col-md-4 control-label">End date</label>
-                <div class="col-md-8">
-                    <input type="date" name="EndTime" value="@ViewBag.EndTime" class="form-control" />
-
-                </div>
-
+                <label class="col-md-4 form-group control-label">Start date</label>
             </div>
         </div>
         <div class="col-md-3">
+            <div class="row">
+                <label class="col-md-4 control-label">End date</label>
+            </div>
+        </div>
+
+       <div class="col-md-3">
+            <div class="row">
+                <label class="col-md-4 control-label">Type meal</label>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-3" style="padding-right:50px">
+            <div class="row">
+                                    <input type="text" name="NameFood" value="@ViewBag.Name" class="form-control" />
+
+            </div>
+        </div>
+
+        <div class="col-md-3" style="padding-right:50px">
+            <div class="row">
+                                    <input type="date" name="StartTime" value="@ViewBag.StartTime" class="form-control" />
+
+            </div>
+        </div>
+
+        <div class="col-md-3" style="padding-right:50px">
+            <div class="row">
+                                    <input type="date" name="EndTime" value="@ViewBag.EndTime" class="form-control" />
+
+            </div>
+        </div>
+
+         <div class="col-md-3"  style="padding-right:50px">
             <select class="form-control" name="mealTime" id="mealTimeSelect">
                 <option>--Select meal time--</option>
                 <option value="Breakfast">Breakfast</option>
@@ -62,22 +84,21 @@
                 <option value="Dinner">Dinner</option>
             </select>
         </div>
-        <div class="col-md-3">
+    </div>
+    <div class="row">
+        <div class="col-md-8 right" style="padding-top:10px; padding-bottom:10px;">
             <button type="submit" class="btn btn-success">Filter</button>
-             <a asp-route-startTime="" asp-route-endTime="" asp-route-mealTime="" class="btn btn-success">Refresh</a>
+            <a asp-route-startTime="" asp-route-endTime="" asp-route-mealTime="" class="btn btn-success">Refresh</a>
+
+            @using (Html.BeginForm("Export", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="submit" value="Export" class="btn btn-success" />
+            }
         </div>
+   
     </div>
 </form>
 
-<div class="row">
-    @using (Html.BeginForm("Export", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class="col-md-3">
-            <input type="submit" value="Export" class="btn btn-success" />
-        </div>
-    }
-   
-</div>
 
 <table class="table">
     <thead>

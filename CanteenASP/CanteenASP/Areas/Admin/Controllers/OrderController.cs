@@ -19,11 +19,16 @@ namespace CanteenASP.Areas.Admin.Controllers
             _pWwwRoot = Path.Combine(webHostEnviroment.ContentRootPath, "wwwroot");
         }
 
-        public async Task<IActionResult> Index(string mealTime, string startTime, string endTime)
+        public async Task<IActionResult> Index(string nameFood, string mealTime, string startTime, string endTime)
         {
             var lOrder = await _orderService.GetAll();
-            if(!string.IsNullOrEmpty(mealTime) || mealTime == "--Select meal time--")
+            if (!string.IsNullOrEmpty(mealTime) && mealTime != "--Select meal time--")
                 lOrder = lOrder.Where(x => x.Food.MealTime.ToString() == mealTime).ToList();
+
+            if (!string.IsNullOrEmpty(nameFood))
+            {
+                lOrder = lOrder.Where(x => x.Food.Name.ToLower().Contains(nameFood.ToLower())).ToList();
+            }
 
             if (!string.IsNullOrEmpty(startTime))
             {
@@ -43,6 +48,7 @@ namespace CanteenASP.Areas.Admin.Controllers
             ViewData["MealTime"] = mealTime;
             ViewBag.StartTime = startTime; // "2021-12-21"
             ViewBag.EndTime = endTime;
+            ViewBag.Name = nameFood;
 
             return View(lOrder);
         }

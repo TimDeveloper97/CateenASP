@@ -22,6 +22,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var lFood = await _foodService.GetAll();
+            //await _foodService.UpdateData();
             return View(lFood);
         }
 
@@ -37,7 +38,8 @@ namespace CanteenASP.Areas.Admin.Controllers
         {
             if(string.IsNullOrEmpty(food.Name) 
                 || string.IsNullOrEmpty(food.Price)
-                || string.IsNullOrEmpty(food.SideDishes))
+                || string.IsNullOrEmpty(food.SideDishes)
+                || string.IsNullOrEmpty(food.Detail))
                 return View(food);
 
             string path = Path.Combine(_pWwwRoot, "assets");

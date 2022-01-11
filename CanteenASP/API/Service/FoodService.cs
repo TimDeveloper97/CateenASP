@@ -80,8 +80,12 @@ namespace API
             food.Price = t.Price;
             food.SideDishes = t.SideDishes;
             food.Image = t.Image;
+            food.MealTime = t.MealTime;
+            food.Size = t.Size;
+            food.Type = t.Type;
+            food.Detail = t.Detail;
 
-            var result = await FoodCollection.ReplaceOneAsync(filter, food, options: new UpdateOptions() { IsUpsert = false });
+            var result = await FoodCollection.ReplaceOneAsync(filter, food, new UpdateOptions { IsUpsert = true });
             return result.IsAcknowledged;
         }
         public async Task<List<Food>> GetFoodByMealTime(MealTime mealTime)
@@ -89,6 +93,15 @@ namespace API
             var foods = await FoodCollection.Find(x => x.MealTime == mealTime).ToListAsync();
             return foods;
         }
-
+        public Task UpdateData()
+        {
+            var filterDefinition = Builders<Food>.Filter.Where(w => w.Name != null);
+            var updateDefinition = Builders<Food>.Update
+                .Set(d => d.Size, Size.Medium)
+                .Set(d => d.Detail, "Detail")
+                .Set(d => d.Type, Model.Type.Combo);
+            FoodCollection.UpdateMany(filterDefinition, updateDefinition);
+            return Task.CompletedTask;
+        }
     }
 }

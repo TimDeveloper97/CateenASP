@@ -12,7 +12,7 @@ namespace API
     {
         private static string _connectionString = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
         
-        private static string _databaseName = "CateenASP";
+        private static string _databaseName = "CanteenASP";
 
         private static IMongoDatabase? _db;
 

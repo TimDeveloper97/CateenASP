@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace CanteenASP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FoodService _foodService;
@@ -38,6 +38,29 @@ namespace CanteenASP.Controllers
             }
             ViewData["Message"] = TempData["Message"];
             ViewData["Flag"] = TempData["Flag"];
+            return View(foods);
+        }
+
+        public async Task<IActionResult> Meals(int meal)
+        {
+            var foods = await _foodService.GetFoodByMealTime((MealTime)meal);
+            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+            foreach (var item in foods)
+            {
+                item.Price = double.Parse(item.Price).ToString("#,###", cul.NumberFormat);
+            }
+            if(meal == 1)
+            {
+                ViewBag.Meal = "Breakfast";
+            }
+            else if(meal == 2)
+            {
+                ViewBag.Meal = "Lunch";
+            }
+            else
+            {
+                ViewBag.Meal = "Dinner";
+            }    
             return View(foods);
         }
 

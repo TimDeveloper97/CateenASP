@@ -28,6 +28,11 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Detail" class="control-label"></label>
+                <input asp-for="Detail" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -43,6 +48,21 @@
 					<option value="1">Breakfast</option>
 					<option value="2">Lunch</option>
 					<option value="3">Dinner</option>
+				</select>
+			</div>
+            <div class="form-group">
+				<label asp-for="Size" class="control-label"></label>
+				<select asp-for="Size" class="form-select">
+					<option value="1">Large</option>
+					<option value="2">Medium</option>
+					<option value="3">Small</option>
+				</select>
+			</div>
+            <div class="form-group">
+				<label asp-for="Type" class="control-label"></label>
+				<select asp-for="Type" class="form-select">
+					<option value="1">Option</option>
+					<option value="2">Combo</option>
 				</select>
 			</div>
             <div class="form-group">

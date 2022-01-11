@@ -81,7 +81,6 @@ namespace API
             var filter = Builders<Order>.Filter.Eq("_id", new ObjectId(t.Id));
             order.Food = t.Food;
             order.User = t.User;
-            //order.Type = t.Type;
             order.OrderTime = t.OrderTime;
 
             var result = await OrderCollection.ReplaceOneAsync(filter, order, options: new UpdateOptions() { IsUpsert = false });

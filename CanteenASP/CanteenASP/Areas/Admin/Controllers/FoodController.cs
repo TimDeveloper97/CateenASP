@@ -8,7 +8,7 @@ using MongoDB.Bson;
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FoodController : BaseController
+    public class FoodController : AdminBaseController
     {
         readonly FoodService _foodService;
         string _pWwwRoot;

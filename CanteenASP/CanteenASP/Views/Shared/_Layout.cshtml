@@ -46,6 +46,11 @@
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Cart</div>
+                        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-route-meal=0>
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            Your order
+                        </a>
                         <div class="sb-sidenav-menu-heading">Meal</div>
                         <a class="nav-link" asp-action="Meals" asp-controller="Home" asp-route-meal=1>
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -73,10 +78,6 @@
 
         </div>
     </div>
-
-
-
-    
 
     <script src="/js/jquery.min.js"></script>
 

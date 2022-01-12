@@ -38,12 +38,6 @@
 </div>
 
 <div class="container">
-
-
-
-
-
-
     @if (ViewData["Message"] != null)
     {
         @*<div id="msgAlert" class="alert alert-danger" role="alert">
@@ -79,8 +73,6 @@
             <div class="track">
                 @foreach (var item in Model)
                 {
-
-
                     <div class="card-container">
                         <div class="card">
                             <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>

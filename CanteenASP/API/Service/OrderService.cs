@@ -104,14 +104,15 @@ namespace API
             var csv = new StringBuilder();
 
             //header
-            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Meal Time, Price, Order Time");
+            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Meal Time, Size, Type, Detail, Price, Order Time");
 
             //body
             int index = 1;
             foreach (var order in orders)
             {
                 var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", index++, order.User.DisplayName, order.User.Phone,
-                                            order.Food.Name, order.Food.SideDishes, order.Food.MealTime,order.Food.Price, order.OrderTime);
+                                            order.Food.Name, order.Food.SideDishes, order.Food.MealTime, order.Food.Size, 
+                                            order.Food.Type, order.Food.Detail, order.Food.Price, order.OrderTime);
                 csv.AppendLine(newLine);
             }
 
@@ -136,7 +137,8 @@ namespace API
         public async Task<bool> MealTimeIsExist(string userId, MealTime mealTime)
         {
             var orders = await GetAll();
-            var order = orders.Where(x => x.User.Id == userId && x.Food.MealTime == mealTime && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
+            var order = orders.Where(x => x.User.Id == userId && x.Food.MealTime == mealTime 
+            && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
             return order == null ? false : true;
         }
     }

@@ -20,7 +20,7 @@
                         option.selected = true;
                         return;
                     }
-top        }
+            }
             }
     
 </script>
@@ -122,6 +122,15 @@ top        }
                 @Html.DisplayNameFor(model => model.Food.MealTime)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Food.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food.Detail)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.OrderTime)
             </th>
             <th></th>
@@ -148,6 +157,15 @@ top        }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Food.MealTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.Detail)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderTime)

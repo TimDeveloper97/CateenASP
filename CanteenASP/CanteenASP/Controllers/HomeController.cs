@@ -37,7 +37,7 @@ namespace CanteenASP.Controllers
                 item.Price = double.Parse(item.Price).ToString("#,###", cul.NumberFormat);
             }
             ViewData["Message"] = TempData["Message"];
-            ViewData["Flag"] = TempData["Flag"];
+            ViewData["Flag"] = TempData["Flag"];  
             return View(foods);
         }
 

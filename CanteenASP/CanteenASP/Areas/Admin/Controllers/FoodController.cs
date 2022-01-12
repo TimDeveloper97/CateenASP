@@ -116,5 +116,11 @@ namespace CanteenASP.Areas.Admin.Controllers
             await _foodService.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "User", new { area = "" });
+        }
     }
 }

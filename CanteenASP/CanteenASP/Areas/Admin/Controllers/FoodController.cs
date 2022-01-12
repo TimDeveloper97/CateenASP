@@ -22,7 +22,6 @@ namespace CanteenASP.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var lFood = await _foodService.GetAll();
-            //await _foodService.UpdateData();
             return View(lFood);
         }
 

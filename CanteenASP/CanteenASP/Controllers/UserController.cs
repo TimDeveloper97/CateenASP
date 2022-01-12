@@ -21,7 +21,7 @@ namespace CanteenASP.Controllers
             var res = await _userService.Login(username, password);
             if (res.Success)
             {
-                HttpContext.Session.SetString("UserId",res.Result.Id);
+                HttpContext.Session.SetString("UserId", res.Result.Id);
                 
                 if (res.Result.Description.ToLower() == "admin")
                 {

@@ -37,7 +37,6 @@ namespace CanteenASP.Areas.Admin.Controllers
         {
             if(string.IsNullOrEmpty(food.Name) 
                 || string.IsNullOrEmpty(food.Price)
-                || string.IsNullOrEmpty(food.SideDishes)
                 || string.IsNullOrEmpty(food.Detail))
                 return View(food);
 

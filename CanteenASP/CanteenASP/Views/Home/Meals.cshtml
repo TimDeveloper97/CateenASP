@@ -3,6 +3,8 @@
     ViewData["Title"] = "Trang chủ";
     var listOrder = (List<Order>)ViewBag.Orders;
     var flag = ViewData["Flag"];
+    var size = 1;
+    var id = "";
 }
 
 @model List<Model.Food>
@@ -38,38 +40,63 @@
 </div>
 
 <div class="container">
-    @if (ViewData["Message"] != null)
-    {
-        @*<div id="msgAlert" class="alert alert-danger" role="alert">
-            @ViewData["Message"]
-            </div>*@
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Notification</h5>
 
-                    </div>
-                    <div class="modal-body">
-                        @ViewData["Message"]
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="closeModal" onclick="closeModal()" data-dismiss="modal">Close</button>
+    @*<div id="msgAlert" class="alert alert-danger" role="alert">
+        @ViewData["Message"]
+        </div>*@
+    <!-- Modal -->
+    <div class="modal fade" id="sizeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Notification</h5>
 
-                    </div>
+                </div>
+                <div class="modal-body">
+                    <h6>Pick size</h6>
+                    <input type="radio" class="btn-check" name="size" id="option1" autocomplete="off" value="1" checked>
+                    <label class="btn btn-primary" for="option1">Small</label>
+
+                    <input type="radio" class="btn-check" name="size" id="option2" value="2" autocomplete="off">
+                    <label class="btn btn-primary" for="option2">Medium</label>
+
+                    <input type="radio" class="btn-check" name="size" id="option3" value="3" autocomplete="off">
+                    <label class="btn btn-primary" for="option3">Large</label>
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" asp-controller="Home" asp-action="Order" onclick="sendData()">Order</a>
+                    <button type="button" class="btn btn-secondary" id="closeModal" onclick="closeModal()" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    }
+    </div>
 
 
 
 
-    <!--Template breakfast-->
+
+
+    <!--Template List combo-->
     @*<h2>@ViewBag.Meal</h2>*@
     <div class="carousel-container">
-        <div class="carousel-inner">
+        <!--Option-->
+        <div class="card-container" style="float: left; width: 275px; height: 420px;">
+            <div class="card">
+                <div class="img"><a asp-action="Details" asp-route-id=""><img src=""></a></div>
+                <div class="info">
+                    <h4><a asp-action="Details" asp-route-id="">Custom meal</a></h4>
+                    <h6>Món phụ: </h6>
+                    <div>
+                        <span style="color: red;">VNĐ</span>
+                    </div>
+                </div>
+                <p>
+                    <a class="order-button" asp-action="Order" asp-route-id="">Order</a>
+                </p>
+            </div>
+        </div>
+        <div class="carousel-inner" id="combo_carousel" style="width: 80%; float: right;">
             <div class="track">
                 @foreach (var item in Model)
                 {
@@ -82,9 +109,10 @@
                                 <div>
                                     <span style="color: red;">@item.Price VNĐ</span>
                                 </div>
+                                @*<input type="text" value="@item.Id" id="@item.Id" style="display:none;"/>*@
                             </div>
                             <p>
-                                <a class="order-button" asp-action="Order" asp-route-id="@item.Id">Order</a>
+                                <button type="button" class="order-button" onclick="openModal()">Order</button>
                             </p>
                         </div>
 
@@ -96,7 +124,7 @@
             </div>
         </div>
         <div class="nav">
-            <button class="prev">
+            <button class="prev" style="left: unset;">
                 <i class="material-icons">
                     keyboard_arrow_left
                 </i>
@@ -118,20 +146,15 @@
     const prev  = document.querySelector('.prev');
     const next = document.querySelector('.next');
     //
-    const prev1  = document.querySelector('.prev1');
-    const next1 = document.querySelector('.next1');
-    //
-    const prev2  = document.querySelector('.prev2');
-    const next2 = document.querySelector('.next2');
+
     //
     const track = document.querySelector('.track');
-    const track1 = document.querySelector('.track1');
-    const track2 = document.querySelector('.track2');
 
-    let carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+
+    let carouselWidth = document.getElementById('combo_carousel').offsetWidth;
 
     window.addEventListener('resize', () => {
-      carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+      carouselWidth = document.getElementById('combo_carousel').offsetWidth;
     })
     //track
     let index = 0;
@@ -155,63 +178,31 @@
       track.style.transform = `translateX(-${index * carouselWidth}px)`;
     });
     //
-    //track1
-    let index1 = 0;
 
-    next1.addEventListener('click', () => {
-      index1++;
-      prev1.classList.add('show');
-      track1.style.transform = `translateX(-${index1 * carouselWidth}px)`;
-
-      if (track1.offsetWidth - (index1 * carouselWidth) < carouselWidth) {
-        next1.classList.add('hide');
-      }
-    });
-
-    prev1.addEventListener('click', () => {
-      index1--;
-      next1.classList.remove('hide');
-      if (index1 === 0) {
-        prev1.classList.remove('show');
-      }
-      track1.style.transform = `translateX(-${index1 * carouselWidth}px)`;
-    });
-    //
-    //track2
-    let index2 = 0;
-
-    next2.addEventListener('click', () => {
-      index2++;
-      prev2.classList.add('show');
-      track2.style.transform = `translateX(-${index2 * carouselWidth}px)`;
-
-      if (track2.offsetWidth - (index2 * carouselWidth) < carouselWidth) {
-        next2.classList.add('hide');
-      }
-    });
-
-    prev2.addEventListener('click', () => {
-      index2--;
-      next2.classList.remove('hide');
-      if (index2 === 0) {
-        prev.classList.remove('show');
-      }
-      track2.style.transform = `translateX(-${index2 * carouselWidth}px)`;
-    });
-    //
     setTimeout(function () {
             $("#msgAlert").fadeOut('slow');
         }, 2000);
      //
 
-     var modal = document.getElementById('myModal');
-     modal.style.display = "unset";
+     var modal = document.getElementById('sizeModal');
+     modal.style.display = "none";
      modal.style.opacity = "unset";
 
      function closeModal(){
+         var modal = document.getElementById('sizeModal');
          modal.style.zIndex = "unset";
          modal.style.display = "none";
          modal.style.opacity = "0";
+     }
+     function openModal(){
+         var modal = document.getElementById('sizeModal');
+         modal.style.display = "block";
+         modal.style.opacity = "100";
+         modal.style.zIndex = "1055";
+         
+     }
+     function sendData(){
+
      }
 </script>
 }

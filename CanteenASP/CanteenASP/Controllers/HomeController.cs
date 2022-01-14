@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace CanteenASP.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FoodService _foodService;
@@ -72,7 +72,7 @@ namespace CanteenASP.Controllers
             return View(food);
         }
 
-        public async Task<IActionResult> Order(string id)
+        public async Task<IActionResult> Order(string id, string size)
         {
             var userId = HttpContext.Session.GetString("UserId");
             if (userId == null)

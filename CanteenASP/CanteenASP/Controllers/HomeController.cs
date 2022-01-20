@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace CanteenASP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FoodService _foodService;

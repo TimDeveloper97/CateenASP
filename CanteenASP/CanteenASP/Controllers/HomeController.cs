@@ -1,9 +1,11 @@
 ﻿using API;
+using API.Helper;
 using CanteenASP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using System.Diagnostics;
 using System.Globalization;
+
 
 namespace CanteenASP.Controllers
 {
@@ -71,16 +73,19 @@ namespace CanteenASP.Controllers
             food.Price = double.Parse(food.Price).ToString("#,###", cul.NumberFormat);
             return View(food);
         }
-
-        public async Task<IActionResult> Order(string id)
+        [HttpPost]
+        public async Task<IActionResult> Order([FromBody] OrderPayload orderPayload)
         {
+            
+
             var userId = HttpContext.Session.GetString("UserId");
             if (userId == null)
             {
-                return RedirectToAction("Index", "User");
+                return Json(new { redirectToUrl = Url.Action("Index", "User") });
             }
             var user = await _userService.GetItem(userId);
-            var food = await _foodService.GetItem(id);
+            var food = await _foodService.GetItem(orderPayload.Id);
+            food.Size = (Size)int.Parse(orderPayload.Size);
             var orderTime = DateTime.Now;
             var flag = await _orderService.MealTimeIsExist(userId, food.MealTime);
             if (!flag)
@@ -90,6 +95,7 @@ namespace CanteenASP.Controllers
                     User = user,
                     Food = food,
                     OrderTime = orderTime,
+                    TotalPrice = (float.Parse(food.Price) + ((float)food.Size - 1) * 5000).ToString()
                 };
                 var res = await _orderService.Create(order);
                 if (!res)
@@ -98,7 +104,7 @@ namespace CanteenASP.Controllers
             else
                 TempData["Message"] = "This meal has already ordered today!";
 
-            return RedirectToAction("Index");
+            return Json(new { redirectToUrl = Url.Action("Index", "Home") });
         }
         public async Task<IActionResult> CancelOrder(string id)
         {

@@ -175,6 +175,7 @@
     color: white!important;
     background-color: #4d7cc9;
     border: 1px solid gray;
+    cursor: pointer;
 }
 
 .order-item {

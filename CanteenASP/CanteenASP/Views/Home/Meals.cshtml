@@ -109,10 +109,10 @@
                                 <div>
                                     <span style="color: red;">@item.Price VNĐ</span>
                                 </div>
-                                @*<input type="text" value="@item.Id" id="@item.Id" style="display:none;"/>*@
+                                <input type="text" value="@item.Id" id="@item.Id" style="display:none;"/>
                             </div>
                             <p>
-                                <button type="button" class="order-button" onclick="openModal()">Order</button>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="order-button">Order</a>
                             </p>
                         </div>
 
@@ -199,7 +199,7 @@
          modal.style.display = "block";
          modal.style.opacity = "100";
          modal.style.zIndex = "1055";
-         
+
      }
      function sendData(){
 

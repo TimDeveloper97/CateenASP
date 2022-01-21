@@ -9,7 +9,9 @@
         <div class="col-md-4">
                <div class="card order-item">
                 <h4>@item.Food.MealTime.ToString()</h4>
-                <h5>@item.Food.Name</h5>
+                <h5>Food Name: @item.Food.Name</h5>
+                <h6>Size: @item.Food.Size</h6>
+                <h6>Price: @item.TotalPrice VNĐ</h6>
                 <a asp-action="CancelOrder" asp-route-id="@item.Id" class="btn btn-danger" style="color: #fff;">Cancel order</a>
                </div>
             </div>

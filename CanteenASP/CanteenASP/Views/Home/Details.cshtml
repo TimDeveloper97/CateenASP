@@ -1,40 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Details food";
+    var price = @Model.Price;
+    var id = @Model.Id;
 }
 
 @model Model.Food
 <style>
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: whitesmoke !important;
-}
-.img img{
-    width: 100%;
-    /* height: 100%; */
-}
-.img{
-    /*width: 300px;*/
-}
-.info button{
-    width: 100%;
-    height: 40px;
-    border-radius: 20px;
-}
-.info{
-    padding-left: 60px;
-}
-.info p{
-    margin: 30px 0;
-}
-.card-view{
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 20px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: whitesmoke !important;
+    }
+
+    .img img {
+        width: 100%;
+        /* height: 100%; */
+    }
+
+    .img {
+        /*width: 300px;*/
+    }
+
+    .info button {
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+    .info {
+        padding-left: 60px;
+    }
+
+        .info p {
+            margin: 30px 0;
+        }
+
+    .card-view {
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 20px;
+    }
 </style>
 
 
@@ -48,15 +57,65 @@ body{
                     </div>
                     <div class="col-md-4 info">
                         <h3>@Model.Name</h3>
-                        <p style="color: red;">@Model.Price VNĐ</p>
-                        <p style="padding: 0 25px;"><a class="order-button" style="text-decoration:none!important;" asp-action="Order" asp-route-id="@Model.Id">Order</a></p>
-                        <h5>Descriptions</h5>
-                        <p>@Model.Description</p>
-                        <h6>Side dishes</h6>
-                        <p>@Model.SideDishes</p>
+                        <p id="price" name="price" style="color: red;">@Model.Price VNĐ</p>
+                        <!--Pick size-->
+                        <h6>Pick size</h6>
+                        <input type="radio" class="btn-check" name="size" id="option1" onclick="handleCheck(this)" autocomplete="off" value="1" checked>
+                        <label class="btn btn-primary" for="option1">Small</label>
+
+                        <input type="radio" class="btn-check" name="size" id="option2" onclick="handleCheck(this)" value="2" autocomplete="off">
+                        <label class="btn btn-primary" for="option2">Medium</label>
+
+                        <input type="radio" class="btn-check" name="size" id="option3" onclick="handleCheck(this)" value="3" autocomplete="off">
+                        <label class="btn btn-primary" for="option3">Large</label>
+                        <!--End pick size-->
+                        <p style="padding: 0 25px;"><a class="order-button" style="text-decoration:none!important;" onclick="sendOrder()">Order</a></p>
+                        <h5>Details</h5>
+                        <p>@Model.Detail</p>
                     </div>
+                </div>
+                <div class="row">
+                    <h5>Descriptions</h5>
+                    <p>@Model.Description</p>
+                    <h6>Side dishes</h6>
+                    <p>@Model.SideDishes</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts{
+<script>
+
+    var si = '1';
+
+    function handleCheck(size){
+        let priceText = document.getElementById("price");
+        let p = @price * 1000 + (parseInt(size.value) - 1) * 5000;
+        let pr = p / 1000;
+        priceText.innerHTML = pr + '.000' + ' VNĐ';
+        si = size.value;
+    };
+
+   function sendOrder(){
+        var data = JSON.stringify({
+        'id' : '@id',
+        'size' : si
+    });
+
+    $.ajax({
+        url: '/Home/Order',
+        type: 'POST',
+        async: true,
+        data: data,
+        success: function(response){
+            console.log(response.redirectToUrl);
+            window.location.href = response.redirectToUrl;
+        },
+        contentType: 'application/json'
+    });
+   }
+
+</script>
+}

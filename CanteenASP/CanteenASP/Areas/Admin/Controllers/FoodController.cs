@@ -8,7 +8,7 @@ using MongoDB.Bson;
 namespace CanteenASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class FoodController : BaseController
+    public class FoodController : AdminBaseController
     {
         readonly FoodService _foodService;
         string _pWwwRoot;
@@ -37,7 +37,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         {
             if(string.IsNullOrEmpty(food.Name) 
                 || string.IsNullOrEmpty(food.Price)
-                || string.IsNullOrEmpty(food.SideDishes))
+                || string.IsNullOrEmpty(food.Detail))
                 return View(food);
 
             string path = Path.Combine(_pWwwRoot, "assets");
@@ -114,6 +114,12 @@ namespace CanteenASP.Areas.Admin.Controllers
         {
             await _foodService.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "User", new { area = "" });
         }
     }
 }

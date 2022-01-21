@@ -175,6 +175,7 @@
     color: white!important;
     background-color: #4d7cc9;
     border: 1px solid gray;
+    cursor: pointer;
 }
 
 .order-item {
@@ -187,7 +188,7 @@ body{
 }
 
 .carousel-item img{
-    height: 500px;
+    height: 420px;
    
 }
 .w-70{
@@ -203,7 +204,7 @@ body{
 }
 .banner{
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 .header-item{
     color: #fff!important;
@@ -240,3 +241,8 @@ body{
 }
 /*End css for table user infor*/
 
+/*Common use*/
+.pd-0{
+    padding: 0!important;
+}
+/*End common use*/

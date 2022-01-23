@@ -77,8 +77,7 @@ namespace CanteenASP.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(Food food, List<IFormFile> postedFiles)
         {
             if (string.IsNullOrEmpty(food.Name)
-                || string.IsNullOrEmpty(food.Price)
-                || string.IsNullOrEmpty(food.SideDishes))
+                || string.IsNullOrEmpty(food.Price))
                 return View(food);
 
             string path = Path.Combine(_pWwwRoot, "assets");

@@ -1,0 +1,268 @@
+﻿@{
+    ViewData["Title"] = "Details food";
+    //var price = @Model.Price;
+    //var id = @Model.Id;
+    var index = 0;
+    //var details = ViewBag.Details;
+}
+
+@model List<Model.Food>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: whitesmoke !important;
+    }
+
+    .img img {
+        width: 100%;
+        /* height: 100%; */
+    }
+
+    .img {
+        /*width: 300px;*/
+    }
+
+    .info button {
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+    .info {
+        padding-left: 60px;
+    }
+
+        .info p {
+            margin: 30px 0;
+        }
+
+    .card-view {
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+</style>
+
+
+<div class="container" style="margin-top: 100px;">
+
+    <!-- Modal -->
+    <div class="modal fade" id="sizeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Notification</h5>
+
+                </div>
+                <div class="modal-body">
+                    <h5>Detail</h5>
+                    <p id="textDetail"></p>
+                    <p id="price" name="price" style="color: red;"></p>
+                    <h6>Pick size</h6>
+                    <input type="radio" class="btn-check" name="size" id="option1" onclick="handleCheck(this)" autocomplete="off" value="1" checked>
+                    <label class="btn btn-primary" for="option1">Small</label>
+
+                    <input type="radio" class="btn-check" name="size" id="option2" onclick="handleCheck(this)" value="2" autocomplete="off">
+                    <label class="btn btn-primary" for="option2">Medium</label>
+
+                    <input type="radio" class="btn-check" name="size" id="option3" onclick="handleCheck(this)" value="3" autocomplete="off">
+                    <label class="btn btn-primary" for="option3">Large</label>
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" onclick="addMealToList()">Add To Meal</a>
+                    <button type="button" class="btn btn-secondary" id="closeModal" onclick="closeModal()" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="card-view">
+        <div class="row" style="padding: 0 10%;">
+            <div>
+                <div class="row">
+                    <!--Template List combo-->
+                    @*<h2>@ViewBag.Meal</h2>*@
+                    <div class="carousel-container">
+                        <div class="carousel-inner" id="combo_carousel" style="width: 115%;">
+                            <div class="track">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="card-container">
+                                        <div class="card">
+                                            <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
+                                            <div class="info">
+                                                <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                                <h6>Món phụ: @item.SideDishes</h6>
+                                                <div>
+                                                    <span style="color: red;">@item.Price VNĐ</span>
+                                                </div>
+                                                <input type="text" value="@item.Id" id="@item.Id" style="display:none;" />
+                                            </div>
+                                            <p>
+                                                <a onclick="openModal(this)" data-typeName="@item.Name" data-typeIndex="@index" data-typeId="@item.Id" data-typePrice="@item.Price" name="addToMeal" class="order-button">Add To Meal</a>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                    index = index + 1;
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="nav">
+                            <button class="prev" style="left: unset;">
+                                <i class="material-icons">
+                                    keyboard_arrow_left
+                                </i>
+                            </button>
+                            <button class="next" style="right: -140px;">
+                                <i class="material-icons">
+                                    keyboard_arrow_right
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <h5>Added meal</h5>
+                    <p id="addedMeal"></p>
+                </div>
+                <div class="row">
+                    <p style="padding: 0 25px;"><a class="order-button" style="text-decoration:none!important;" onclick="sendOrder()">Order</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+
+     const prev  = document.querySelector('.prev');
+     const next = document.querySelector('.next');
+     //
+
+     //
+     const track = document.querySelector('.track');
+
+
+     let carouselWidth = document.getElementById('combo_carousel').offsetWidth;
+
+     window.addEventListener('resize', () => {
+       carouselWidth = document.getElementById('combo_carousel').offsetWidth;
+     })
+     //track
+     let index = 0;
+
+     next.addEventListener('click', () => {
+       index++;
+       prev.classList.add('show');
+       track.style.transform = `translateX(-${index * carouselWidth}px)`;
+
+       if (track.offsetWidth - (index * carouselWidth) < carouselWidth) {
+         next.classList.add('hide');
+       }
+     });
+
+     prev.addEventListener('click', () => {
+       index--;
+       next.classList.remove('hide');
+       if (index === 0) {
+         prev.classList.remove('show');
+       }
+       track.style.transform = `translateX(-${index * carouselWidth}px)`;
+     });
+     //
+
+     var sizes = [];
+     var ids = [];
+     var id = "";
+     var fName = "";
+     var si = '1';
+     var price = 0;
+     function handleCheck(size){
+         let priceText = document.getElementById("price");
+         let p = price + (parseInt(size.value) - 1) * 5000;
+         let pr = p / 1000;
+         priceText.innerHTML = pr + '.000' + ' VNĐ';
+         si = size.value;
+     };
+
+     var modal = document.getElementById('sizeModal');
+      modal.style.display = "none";
+      modal.style.opacity = "unset";
+
+      function closeModal(){
+          var modal = document.getElementById('sizeModal');
+          modal.style.zIndex = "unset";
+          modal.style.display = "none";
+          modal.style.opacity = "0";
+      }
+      function openModal(meal){
+          var modal = document.getElementById('sizeModal');
+          modal.style.display = "block";
+          modal.style.opacity = "100";
+          modal.style.zIndex = "1055";
+          var mealIndex = parseInt(meal.dataset.typeindex);
+          var details = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewData["details"]));
+          document.getElementById("textDetail").innerHTML = details[mealIndex];
+          id = meal.dataset.typeid;
+          fName = meal.dataset.typename;
+          price = parseInt(meal.dataset.typeprice);
+          document.getElementById("price").innerHTML = price + " VNĐ";
+      }
+
+      function addMealToList(){
+          sizes.push(si);
+          ids.push(id);
+          closeModal();
+          var addedMeal = document.getElementById("addedMeal");
+          addedMeal.innerHTML += fName + " " + "size " + convertSize(si) + " ";
+      }
+      function convertSize(size){
+          if(size == 1){
+              return "Small";
+          }else if(size == 2){
+              return "Medium";
+          }else{
+              return "Large";
+          }
+      }
+
+      function sendOrder(){
+         var orders = [];
+         for(var i = 0; i < ids.length; i++){
+             var order = {
+                 id : ids[i],
+                 size : sizes[i]
+             };
+             orders.push(order);
+         }
+         var data = JSON.stringify(orders);
+
+     $.ajax({
+         url: '/Home/OptionOrder',
+         type: 'POST',
+         async: true,
+         data: data,
+         success: function(response){
+             console.log(response.redirectToUrl);
+             window.location.href = response.redirectToUrl;
+         },
+         contentType: 'application/json'
+     });
+    }
+
+</script>
+}

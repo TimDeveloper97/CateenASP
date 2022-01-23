@@ -29,10 +29,11 @@ namespace API
         {
             if (OrderCollection != null)
             {
-                if(t.Food.MealTime != Common.TimeToEnum(t.OrderTime))
+                if(t.Food != null && t.Food.MealTime != Common.TimeToEnum(t.OrderTime))
                 {
                     return false;
                 }
+
                 await OrderCollection.InsertOneAsync(t);
                 return true;
             }

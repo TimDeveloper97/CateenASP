@@ -12,7 +12,7 @@ namespace API
     {
         static RangeTime _tBreakfast = new RangeTime { Start = new TimeSpan(20, 0, 0), Finish = new TimeSpan(24, 0, 0) };
         static RangeTime _tLunch = new RangeTime { Start = new TimeSpan(6, 0, 0), Finish = new TimeSpan(10, 0, 0) };
-        static RangeTime _tDinner = new RangeTime { Start = new TimeSpan(12, 0, 0), Finish = new TimeSpan(16, 0, 0) };
+        static RangeTime _tDinner = new RangeTime { Start = new TimeSpan(12, 0, 0), Finish = new TimeSpan(20, 0, 0) };
 
         public static string? MD5Hash(string input)
         {

@@ -27,12 +27,13 @@ namespace CanteenASP.Controllers
         public async Task<IActionResult> Index()
         {
             var foods = await _foodService.GetAll();
+            
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
             var userId = HttpContext.Session.GetString("UserId");
             if (userId != null)
             {
                 var orders = await _orderService.GetOrdersByUser(userId);
-                ViewBag.Orders = orders.Where(x => x.OrderTime.Date == DateTime.Now.Date).ToList();
+                ViewBag.Orders = orders.Where(x => x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
             }
             foreach (var item in foods)
             {
@@ -46,6 +47,7 @@ namespace CanteenASP.Controllers
         public async Task<IActionResult> Meals(int meal)
         {
             var foods = await _foodService.GetFoodByMealTime((MealTime)meal);
+            foods = foods.Where(x => x.Type == (Model.Type)2).ToList();
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
             foreach (var item in foods)
             {
@@ -73,6 +75,19 @@ namespace CanteenASP.Controllers
             food.Price = double.Parse(food.Price).ToString("#,###", cul.NumberFormat);
             return View(food);
         }
+
+        public async Task<IActionResult> OptionDetails(int meal)
+        {
+            var foods = await _foodService.GetFoodByMealTime((MealTime)meal);
+            foods = foods.Where(x => x.Type == (Model.Type)1).ToList();
+            var details = new List<string>();
+            foreach(var item in foods)
+            {
+                details.Add(item.Detail);
+            }
+            ViewData["details"] = details;
+            return View(foods);
+        }
         [HttpPost]
         public async Task<IActionResult> Order([FromBody] OrderPayload orderPayload)
         {
@@ -88,6 +103,7 @@ namespace CanteenASP.Controllers
             food.Size = (Size)int.Parse(orderPayload.Size);
             var orderTime = DateTime.Now;
             var flag = await _orderService.MealTimeIsExist(userId, food.MealTime);
+            
             if (!flag)
             {
                 var order = new Order()
@@ -106,6 +122,46 @@ namespace CanteenASP.Controllers
 
             return Json(new { redirectToUrl = Url.Action("Index", "Home") });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> OptionOrder([FromBody] List<OrderPayload> orderPayloads)
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+            if (userId == null)
+            {
+                return Json(new { redirectToUrl = Url.Action("Index", "User") });
+            }
+            var user = await _userService.GetItem(userId);
+            var orderTime = DateTime.Now;
+            var foods = new List<Food>();
+            var totalPrice = 0;
+            foreach(var item in orderPayloads)
+            {
+                var food = await _foodService.GetItem(item.Id);
+                food.Size = (Size)int.Parse(item.Size);
+                var price = int.Parse(food.Price) + ((int)food.Size - 1) * 5000;
+                totalPrice += price;
+                foods.Add(food);
+            }
+            var flag = await _orderService.MealTimeIsExist(userId, foods[0].MealTime);
+            if (!flag)
+            {
+                var order = new Order()
+                {
+                    User = user,
+                    Foods = foods,
+                    OrderTime = orderTime,
+                    TotalPrice = totalPrice.ToString()
+                };
+                var res = await _orderService.Create(order);
+                if (!res)
+                    TempData["Message"] = "Time to order this meal is up!";
+            }   
+            else
+                TempData["Message"] = "This meal has already ordered today!";
+            return Json(new { redirectToUrl = Url.Action("Index", "Home") });
+        }
+
         public async Task<IActionResult> CancelOrder(string id)
         {
             var res = await _orderService.Delete(id);

@@ -1,21 +1,45 @@
 ﻿@using Model
-@model List<Order>
+@model Order
 
 <div class="row order" style="margin-top: 10px;">
     <h2>Your order</h2>
-    @if(Model != null && Model.Count != 0){
-        foreach(var item in Model)
+    @if (Model != null && Model.Food != null)
     {
+
+
         <div class="col-md-4">
-               <div class="card order-item">
-                <h4>@item.Food.MealTime.ToString()</h4>
-                <h5>Food Name: @item.Food.Name</h5>
-                <h6>Size: @item.Food.Size</h6>
-                <h6>Price: @item.TotalPrice VNĐ</h6>
-                <a asp-action="CancelOrder" asp-route-id="@item.Id" class="btn btn-danger" style="color: #fff;">Cancel order</a>
-               </div>
+            <div class="card order-item">
+                <h4>@Model.Food.MealTime.ToString()</h4>
+                <h5>Food Name: @Model.Food.Name</h5>
+                <h6>Size: @Model.Food.Size</h6>
+                <h6>Price: @Model.TotalPrice VNĐ</h6>
+                <a asp-action="CancelOrder" asp-route-id="@Model.Id" class="btn btn-danger" style="color: #fff;">Cancel order</a>
             </div>
-        }
+        </div>
+
+    }
+    else if (Model != null && Model.Foods != null)
+    {
+        <h4>@Model.Foods[0].MealTime.ToString()</h4>
+        <div class="row">
+            @foreach (var item in Model.Foods)
+            {
+                <div class="col-md-3">
+                    <div class="card order-item">
+                        <h5>Food Name: @item.Name</h5>
+                        <h6>Size: @item.Size</h6>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h6>Total Price: @Model.TotalPrice VNĐ</h6>
+                <a asp-action="CancelOrder" asp-route-id="@Model.Id" class="btn btn-danger" style="color: #fff;">Cancel order</a>
+            </div>
+        </div>
     }
     else
     {

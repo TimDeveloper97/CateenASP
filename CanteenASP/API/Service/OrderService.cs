@@ -138,9 +138,20 @@ namespace API
         public async Task<bool> MealTimeIsExist(string userId, MealTime mealTime)
         {
             var orders = await GetAll();
-            var order = orders.Where(x => x.User.Id == userId && x.Food.MealTime == mealTime 
+            var order = orders.Where(x => x.User.Id == userId && x.Food != null && x.Food.MealTime == mealTime 
             && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
             return order == null ? false : true;
         }
+        
+        public async Task<bool> MealTimeIsExist(string userId, List<Food> foods)
+        {
+            var orders = await GetAll();
+            var mealTime = foods[0].MealTime;
+            var order = orders.Where(x => x.User.Id == userId && x.Foods != null && x.Foods[0].MealTime == mealTime
+            && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
+            return order == null ? false : true;
+        }
+
+        
     }
 }

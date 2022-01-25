@@ -72,18 +72,36 @@
     @await Component.InvokeAsync("Meals", listOrder)
 
 
-    
+
 </div>
 
 @section Scripts{
 <script>
 
-    
+
     //
     setTimeout(function () {
             $("#msgAlert").fadeOut('slow');
         }, 2000);
      //
+     document.addEventListener('DOMContentLoaded', ready);
+     function ready(){
+        var option = document.getElementById("option-meal");
+        option.addEventListener('click', openDetail);
+        }
+        
+
+    
+
+        function openDetail(){
+            var detail = document.getElementById("detail");
+            detail.style.display = "block";
+        }
+        function closeDetail(){
+            var detail = document.getElementById("detail");
+            detail.style.display = "none";
+        }
+
 
      var modal = document.getElementById('myModal');
      modal.style.display = "unset";

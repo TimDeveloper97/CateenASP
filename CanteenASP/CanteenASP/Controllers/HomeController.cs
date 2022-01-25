@@ -91,8 +91,6 @@ namespace CanteenASP.Controllers
         [HttpPost]
         public async Task<IActionResult> Order([FromBody] OrderPayload orderPayload)
         {
-            
-
             var userId = HttpContext.Session.GetString("UserId");
             if (userId == null)
             {
@@ -133,8 +131,18 @@ namespace CanteenASP.Controllers
             }
             var user = await _userService.GetItem(userId);
             var orderTime = DateTime.Now;
+            var rice = new Food
+            {
+                Id = Guid.NewGuid().ToString(),
+                Description = "Cơm trắng bắc hương",
+                Detail = "100% tinh bột",
+                Name = "Cơm",
+                Price = "10000",
+                Type = Model.Type.Option,
+            };
             List<Food> foods = new List<Food>();
             var totalPrice = 0;
+            
             foreach(var item in orderPayloads)
             {
                 var food = await _foodService.GetItem(item.Id);
@@ -149,9 +157,10 @@ namespace CanteenASP.Controllers
                 var order = new Order()
                 {
                     User = user,
+                    Food = rice,
                     Foods = foods,
                     OrderTime = orderTime,
-                    TotalPrice = totalPrice.ToString()
+                    TotalPrice = (totalPrice + int.Parse(rice.Price)).ToString()
                 };
                 var res = await _orderService.Create(order);
                 if (!res)

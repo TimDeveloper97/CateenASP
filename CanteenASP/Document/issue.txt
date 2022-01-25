@@ -1,0 +1,12 @@
+Lỗi cần fix:
+1, vào user -> breakfast -> món option có card dài hơn các món combo khác
+=> fix lại size cho cân
+2, tất cả các món option đều có thể đặt được chưa kiểm tra theo time
+=> fix lại kiểm tra từng khung thời gian
+3, nếu bữa đó đã chọn rồi thì nếu chọn món khác thì hiển thị thông báo bạn đã chọn món rồi.
+VD: bữa sáng: chọn option rồi -> vào bữa sáng -> chọn tiếp 1 món khác -> hiển thị thông báo
+=> thêm thông báo
+*** 1 lỗi phát sinh
+Khi order 2 món trong cùng 1 bữa (breakfast) -> hiển thị 1 món ra màn hình -> nhưng khi remove 1 món thì món
+thứ 2 bắt đầu hiện ra.
+=> yêu cầu loại bỏ món thứ 2

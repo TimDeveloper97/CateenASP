@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace CanteenASP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly FoodService _foodService;
@@ -133,7 +133,7 @@ namespace CanteenASP.Controllers
             }
             var user = await _userService.GetItem(userId);
             var orderTime = DateTime.Now;
-            var foods = new List<Food>();
+            List<Food> foods = new List<Food>();
             var totalPrice = 0;
             foreach(var item in orderPayloads)
             {
@@ -143,7 +143,7 @@ namespace CanteenASP.Controllers
                 totalPrice += price;
                 foods.Add(food);
             }
-            var flag = await _orderService.MealTimeIsExist(userId, foods[0].MealTime);
+            var flag = await _orderService.MealTimeIsExist(userId, foods);
             if (!flag)
             {
                 var order = new Order()

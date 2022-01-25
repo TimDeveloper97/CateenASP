@@ -137,7 +137,7 @@
                 <h5>Added meal</h5>
                 <div class="cart-row">
                     <span class="cart-item cart-header cart-column">Food</span>
-                    <span class="cart-price cart-header cart-column">Price</span>
+                    <span class="cart-price cart-header cart-column">Size</span>
                     <span class="cart-quantity cart-header cart-column">Remove</span>
                 </div>
                 <div class="cart-items">
@@ -300,8 +300,8 @@
 
             <span class="cart-item-title">${title}</span>
         </div>
-        <span id="size" class="cart-price cart-column">${textSize}</span>
-        <span id="id" style="display: none;">${id}</span>
+        <span class="cart-price cart-column">${textSize}</span>
+        <span class="food-id" style="display: none;">${id}</span>
         <div class="cart-quantity cart-column">
 
             <button class="btn btn-danger" type="button">REMOVE</button>
@@ -316,10 +316,12 @@
         var buttonClicked = event.target
         //console.log(buttonClicked);
         var row = buttonClicked.parentElement.parentElement;
-        var foodId = row.getElementById("id");
-        var size = row.getElementById("size");
-        ids.remove()
-        buttonClicked.parentElement.parentElement.remove()  
+        var foodId = row.getElementsByClassName("food-id")[0].innerText;
+        //var size = row.getElementById("size");
+        var index = ids.indexOf(foodId);
+        ids.splice(index, 1);
+        sizes.splice(index, 1);
+        buttonClicked.parentElement.parentElement.remove();  
 
     //updateCartTotal()
     }

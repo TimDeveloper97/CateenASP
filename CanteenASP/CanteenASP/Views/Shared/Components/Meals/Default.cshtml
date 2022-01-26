@@ -3,7 +3,7 @@
 
 <div class="row order" style="margin-top: 10px;">
     <h2>Your order</h2>
-    @if (Model != null && Model.Food != null)
+    @if (Model != null && Model.Food.Type == (Model.Type)2)
     {
 
 
@@ -18,7 +18,7 @@
         </div>
 
     }
-    else if (Model != null && Model.Foods != null)
+    else if (Model != null && Model.Food.Type == (Model.Type)1)
     {
         <h4>@Model.Foods[0].MealTime.ToString()</h4>
         <div class="row">

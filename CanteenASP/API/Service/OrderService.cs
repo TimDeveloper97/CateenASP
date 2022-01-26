@@ -149,6 +149,7 @@ namespace API
             var mealTime = foods[0].MealTime;
             var order = orders.Where(x => x.User.Id == userId && x.Foods != null && x.Foods[0].MealTime == mealTime
             && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
+
             return order == null ? false : true;
         }
 

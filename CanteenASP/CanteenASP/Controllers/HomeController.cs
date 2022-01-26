@@ -3,6 +3,7 @@ using API.Helper;
 using CanteenASP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using MongoDB.Bson;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -133,7 +134,7 @@ namespace CanteenASP.Controllers
             var orderTime = DateTime.Now;
             var rice = new Food
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = new ObjectId().ToString(),
                 Description = "Cơm trắng bắc hương",
                 Detail = "100% tinh bột",
                 Name = "Cơm",

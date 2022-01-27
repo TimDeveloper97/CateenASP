@@ -152,6 +152,7 @@ namespace CanteenASP.Controllers
                 totalPrice += price;
                 foods.Add(food);
             }
+            rice.MealTime = foods[0].MealTime;
             var flag = await _orderService.MealTimeIsExist(userId, foods);
             if (!flag)
             {

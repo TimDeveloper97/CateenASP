@@ -29,11 +29,14 @@ namespace API
         {
             if (OrderCollection != null)
             {
-                //if(t.Food != null && t.Food.MealTime != Common.TimeToEnum(t.OrderTime))
-                //{
-                //    return false;
-                //}
-
+                if (t.Food != null && t.Food.MealTime != Common.TimeToEnum(t.OrderTime))
+                {
+                    return false;
+                }
+                if(t.Foods != null && t.Foods[0].MealTime != Common.TimeToEnum(t.OrderTime))
+                {
+                    return false;
+                }
                 await OrderCollection.InsertOneAsync(t);
                 return true;
             }
@@ -149,7 +152,6 @@ namespace API
             var mealTime = foods[0].MealTime;
             var order = orders.Where(x => x.User.Id == userId && x.Foods != null && x.Foods[0].MealTime == mealTime
             && x.OrderTime.Date == DateTime.Now.Date).FirstOrDefault();
-
             return order == null ? false : true;
         }
 

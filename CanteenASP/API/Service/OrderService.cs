@@ -108,15 +108,27 @@ namespace API
             var csv = new StringBuilder();
 
             //header
-            csv.AppendLine("ID, Display Name, Phone, Food Name, Side Dishes, Meal Time, Size, Type, Detail, Price, Order Time");
+            csv.AppendLine("ID, Display Name, Phone, Food Type, Description, Meal Time, Detail, Price, Order Time");
 
             //body
             int index = 1;
             foreach (var order in orders)
             {
-                var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", index++, order.User.DisplayName, order.User.Phone,
-                                            order.Food.Name, order.Food.SideDishes, order.Food.MealTime, order.Food.Size, 
-                                            order.Food.Type, order.Food.Detail, order.Food.Price, order.OrderTime);
+                var description = "";
+                if(order.Food.Type == Model.Type.Combo)
+                    description = order.Food.Name + $"\n{order.Food.Detail}";
+                else if(order.Food.Type == Model.Type.Option)
+                {
+                    description = order.Food.Name + $"\n{order.Food.Detail}\n";
+                    foreach (var item in order.Foods)
+                    {
+                        description += item?.Name + $"\n{item?.Detail}\n";
+                    }
+                }    
+
+                var newLine = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}", index++, order.User.DisplayName, order.User.Phone,
+                                            order.Food.Type, description, order.Food.MealTime, 
+                                            order.Food.Detail, order.TotalPrice, order.OrderTime);
                 csv.AppendLine(newLine);
             }
 

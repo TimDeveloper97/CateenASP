@@ -92,7 +92,7 @@
 
             @using (Html.BeginForm("Export", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <input type="submit" value="Export" class="btn btn-success" />
+                <input type="button" value="Export" class="btn btn-success" onclick="location.href='@Url.Action("Export", "Order")'" />
             }
         </div>
    

@@ -53,6 +53,8 @@ namespace CanteenASP.Areas.Admin.Controllers
             return View(lOrder);
         }
 
+        
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Export()
         {
             var result = await _orderService.ExportCsvWithList(_tmpOrders);

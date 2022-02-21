@@ -81,60 +81,56 @@
     @*<h2>@ViewBag.Meal</h2>*@
     <div class="carousel-container">
         <!--Option-->
-        <div class="card-container" style="float: left; width: 275px; height: 420px;">
-            <div class="card">
-                <div class="img"><a asp-action="OptionDetails" asp-route-meal="@Model[0].MealTime"><img src="/assets/comtuchon.jpg"></a></div>
-                <div class="info">
-                    <h4><a asp-action="OptionDetails" asp-route-meal="@((int)Model[0].MealTime)">Custom meal</a></h4>
-                    <h6>Món phụ: </h6>
-                    <div>
-                        <span style="color: red;">VNĐ</span>
+        <div class="row">
+            <div class="col-md-4 col-sm-4" style="padding:0 50px; margin: 15px 0;">
+                <div class="card">
+                    <div class="img"><a asp-action="OptionDetails" asp-route-meal="@Model[0].MealTime"><img src="/assets/comtuchon.jpg"></a></div>
+                    <div class="info">
+                        <h4><a asp-action="OptionDetails" asp-route-meal="@((int)Model[0].MealTime)">Custom meal</a></h4>
+                        <h6>Món phụ: </h6>
+                        <div>
+                            <span style="color: red;">VNĐ</span>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="order-button" asp-action="OptionDetails" asp-route-meal="@((int)Model[0].MealTime)">Order</a>
+                    </p>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-sm-4" style="padding:0 50px; margin: 15px 0;">
+                    <div class="card">
+                        <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
+                        <div class="info">
+                            <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
+                            <h6>Món phụ: @item.SideDishes</h6>
+                            <div>
+                                <span style="color: red;">@item.Price VNĐ</span>
+                            </div>
+                            <input type="text" value="@item.Id" id="@item.Id" style="display:none;" />
+                        </div>
+                        <p>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="order-button">Order</a>
+                        </p>
                     </div>
                 </div>
-                <p>
-                    <a class="order-button" asp-action="OptionDetails" asp-route-meal="@((int)Model[0].MealTime)">Order</a>
-                </p>
-            </div>
+
+            }
         </div>
-        <div class="carousel-inner" id="combo_carousel" style="width: 80%; float: right;">
-            <div class="track">
-                @foreach (var item in Model)
-                {
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="img"><a asp-action="Details" asp-route-id="@item.Id"><img src="/assets/@item.Image"></a></div>
-                            <div class="info">
-                                <h4><a asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h4>
-                                <h6>Món phụ: @item.SideDishes</h6>
-                                <div>
-                                    <span style="color: red;">@item.Price VNĐ</span>
-                                </div>
-                                <input type="text" value="@item.Id" id="@item.Id" style="display:none;"/>
-                            </div>
-                            <p>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="order-button">Order</a>
-                            </p>
-                        </div>
 
-                    </div>
-
-                }
-
-
-            </div>
-        </div>
-        <div class="nav">
+        @*<div class="nav">
             <button class="prev" style="left: unset;">
-                <i class="material-icons">
-                    keyboard_arrow_left
-                </i>
+            <i class="material-icons">
+            keyboard_arrow_left
+            </i>
             </button>
             <button class="next">
-                <i class="material-icons">
-                    keyboard_arrow_right
-                </i>
+            <i class="material-icons">
+            keyboard_arrow_right
+            </i>
             </button>
-        </div>
+            </div>*@
     </div>
 
 
